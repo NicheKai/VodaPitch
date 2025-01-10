@@ -1,1 +1,220 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Sentence Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .sentence {
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .bullet-points {
+            margin-top: 20px;
+        }
+        .preview {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Sentence Editor</h1>
+
+    <div>
+        <label for="sentence-select">Select a Sentence Template:</label>
+        <select id="sentence-select">
+            <option value="">-- Select a Sentence --</option>
+        </select>
+    </div>
+
+    <div id="editor" class="sentence">
+        <!-- Dynamic sentence editor will be rendered here -->
+    </div>
+
+    <div id="bullet-points" class="bullet-points">
+        <!-- Bullet points will be rendered here if available -->
+    </div>
+
+    <button id="save-button">Save to Clipboard</button>
+
+    <script>
+        // Sample data (would come from the backend in a real application)
+        const sentenceTemplates = [
+            {
+                id: 1,
+                template: [
+                    { type: 'text', value: 'The' },
+                    { type: 'dropdown', options: ['quick', 'lazy', 'energetic'], value: 'quick' },
+                    { type: 'text', value: 'brown fox' },
+                    { type: 'dropdown', options: ['jumps', 'hops', 'sits'], value: 'jumps' },
+                    { type: 'text', value: 'over the' },
+                    { type: 'textbox', placeholder: 'lazy dog', value: '' },
+                    { type: 'newline' },
+                    { type: 'text', value: 'And runs away.' }
+                ],
+                bulletPoints: [
+                    'Fast runner',
+                    'Sneaky behavior',
+                    'Loves challenges'
+                ]
+            },
+            {
+                id: 2,
+                template: [
+                    { type: 'text', value: 'Hello' },
+                    { type: 'textbox', placeholder: 'world', value: '' },
+                    { type: 'text', value: 'from the' },
+                    { type: 'dropdown', options: ['future', 'past', 'present'], value: 'future' },
+                    { type: 'newline' },
+                    { type: 'text', value: 'Hope you are doing well!' }
+                ]
+                // No bullet points for this template
+            }
+        ];
+
+        const sentenceSelect = document.getElementById('sentence-select');
+        const editor = document.getElementById('editor');
+        const bulletPointsContainer = document.getElementById('bullet-points');
+        const saveButton = document.getElementById('save-button');
+
+        // Populate dropdown with sentence templates
+        sentenceTemplates.forEach((template, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = `Sentence ${index + 1}`;
+            sentenceSelect.appendChild(option);
+        });
+
+        function renderEditor(template) {
+            editor.innerHTML = '';
+            template.forEach((part, index) => {
+                if (part.type === 'text') {
+                    const span = document.createElement('span');
+                    span.textContent = ` ${part.value} `;
+                    editor.appendChild(span);
+                } else if (part.type === 'dropdown') {
+                    const select = document.createElement('select');
+                    select.dataset.index = index;
+                    part.options.forEach(optionValue => {
+                        const option = document.createElement('option');
+                        option.value = optionValue;
+                        option.textContent = optionValue;
+                        if (optionValue === part.value) {
+                            option.selected = true;
+                        }
+                        select.appendChild(option);
+                    });
+                    select.addEventListener('change', updatePreview);
+                    editor.appendChild(select);
+                } else if (part.type === 'textbox') {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.placeholder = part.placeholder;
+                    input.dataset.index = index;
+                    input.value = part.value;
+                    input.addEventListener('input', updatePreview);
+                    editor.appendChild(input);
+                } else if (part.type === 'newline') {
+                    const br = document.createElement('br');
+                    editor.appendChild(br);
+                }
+            });
+        }
+
+        function renderBulletPoints(bulletPoints) {
+            bulletPointsContainer.innerHTML = '';
+            if (bulletPoints && bulletPoints.length > 0) {
+                const label = document.createElement('h3');
+                label.textContent = 'Bullet Points:';
+                bulletPointsContainer.appendChild(label);
+
+                bulletPoints.forEach((point, index) => {
+                    const div = document.createElement('div');
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `bullet-${index}`;
+                    checkbox.dataset.index = index;
+                    checkbox.addEventListener('change', updatePreview);
+
+                    const label = document.createElement('label');
+                    label.setAttribute('for', `bullet-${index}`);
+                    label.textContent = point;
+
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+                    bulletPointsContainer.appendChild(div);
+                });
+            }
+        }
+
+        function updatePreview() {
+            const selectedTemplateIndex = sentenceSelect.value;
+            if (selectedTemplateIndex === '') {
+                previewText.textContent = 'No sentence selected.';
+                return;
+            }
+
+            const template = sentenceTemplates[selectedTemplateIndex].template;
+            const bulletPoints = sentenceTemplates[selectedTemplateIndex].bulletPoints || [];
+
+            editor.childNodes.forEach((node) => {
+                if (node.tagName === 'SELECT') {
+                    const dropdownIndex = node.dataset.index;
+                    template[dropdownIndex].value = node.value;
+                } else if (node.tagName === 'INPUT' && node.type === 'text') {
+                    const textboxIndex = node.dataset.index;
+                    template[textboxIndex].value = node.value;
+                }
+            });
+
+            const selectedBullets = Array.from(bulletPointsContainer.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(checkbox => bulletPoints[checkbox.dataset.index]);
+
+            const previewContent = template.map(part => {
+                if (part.type === 'newline') {
+                    return '\n';
+                }
+                return part.value;
+            }).join(' ');
+
+            const bulletContent = selectedBullets.length > 0 ? '\n' + selectedBullets.join('\n') : '';
+            previewText.textContent = previewContent.replace(/\n/g, '\n') + bulletContent;
+        }
+
+        function saveToClipboard() {
+            navigator.clipboard.writeText(previewText.textContent)
+                .then(() => alert('Saved to clipboard!'))
+                .catch(err => alert('Failed to copy: ' + err));
+        }
+
+        sentenceSelect.addEventListener('change', () => {
+            const selectedTemplateIndex = sentenceSelect.value;
+            if (selectedTemplateIndex !== '') {
+                const templateData = sentenceTemplates[selectedTemplateIndex];
+                renderEditor(templateData.template);
+                renderBulletPoints(templateData.bulletPoints);
+                updatePreview();
+            } else {
+                editor.innerHTML = '';
+                bulletPointsContainer.innerHTML = '';
+                previewText.textContent = 'No sentence selected.';
+            }
+        });
+
+        saveButton.addEventListener('click', saveToClipboard);
+    </script>
+</body>
+</html>
+

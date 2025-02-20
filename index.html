@@ -234,7 +234,11 @@
                 } else if (part.type === 'newline') {
                     const br = document.createElement('br');
                     editor.appendChild(br);
-                } 
+                } else if (part.type === 'today') {
+                    const datetime = document.getElementById("datetime");
+                    span.textContent = ` ${part.value} `;
+                    editor.appendChild(datetime);
+                }
             });
         }
 

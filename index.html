@@ -124,6 +124,9 @@
     <button id="save-button">Save to Clipboard</button>
 
     <script>
+        var now = new Date();
+        var datetime = now.toLocaleString();
+        
         const sentenceTemplates = [
             {
                 id: 1,
@@ -179,6 +182,7 @@
                     { type: 'textbox', placeholder: 'Device', value: '' },
                     { type: 'dropdown', options: ['128GB', '256GB', '512GB', '1TB', '64GB'], value: 'Storage' },
                     { type: 'newline' },
+                    { type: 'today' },
                     { type: 'text', value: 'With unlimited calls, texts and' },
                     { type: 'textbox', placeholder: 'Data', value: '' },                    
                 ],
@@ -230,6 +234,9 @@
                 } else if (part.type === 'newline') {
                     const br = document.createElement('br');
                     editor.appendChild(br);
+                } else if (part.type === 'today') {
+                    const td = document.getElementById("datetime").innerHTML;
+                    editor.appendChild(td);
                 }
             });
         }

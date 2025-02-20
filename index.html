@@ -172,6 +172,18 @@
                 ],
                 bulletPoints: [] // No bullet points for this template
             }
+
+            {
+                id: 2,
+                template: [
+                    { type: 'textbox', placeholder: 'Device', value: '' },
+                    { type: 'dropdown', options: ['128GB', '256GB', '512GB', '1TB', '64GB'], value: 'Storage' },
+                    { type: 'newline' },
+                    { type: 'text', value: 'With unlimited calls, texts and' },
+                    { type: 'textbox', placeholder: 'Data', value: '' },                    
+                ],
+                bulletPoints: [] // No bullet points for this template
+            }
         ];
 
         const sentenceSelect = document.getElementById('sentence-select');

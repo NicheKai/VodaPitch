@@ -161,7 +161,7 @@
                     { type: 'newline' },
                     { type: 'text', value: 'This plan includes: ' },
                     { type: 'newline' },
-                    { type: 'text', value: 'Unlimited picture messages 🖼' },
+                    { type: 'text', value: 'Unlimited picture messages' },
                     { type: 'newline' },
                     { type: 'text', value: 'VeryMe rewards  ' },
                     { type: 'newline' },
@@ -170,7 +170,7 @@
                     { type: 'text', value: '6x unlimited data boosters (meaning you can opt for unlimited data for a month, 6 times in your contract) ' },
                     { type: 'newline' },
                     { type: 'newline' },
-                    { type: 'text', value: 'If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one!📱📲' },
+                    { type: 'text', value: 'If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one!' },
                     { type: 'newline' },                    
                 ],
                 bulletPoints: [] // No bullet points for this template
@@ -234,10 +234,7 @@
                 } else if (part.type === 'newline') {
                     const br = document.createElement('br');
                     editor.appendChild(br);
-                } else if (part.type === 'today') {
-                    const td = document.getElementById("datetime");
-                    editor.appendChild(td);
-                }
+                } 
             });
         }
 

@@ -1,343 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitching</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vodafone Pitch Manager</title>
     <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --accent-color: #e60000;
+            --border-color: #333;
+        }
+
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #1D1616;
-            color: #EEEEEE;
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            height: 100vh;
         }
-        h1 {
-            text-align: center;
-            color: #EEEEEE;
+
+        .sidebar {
+            width: 250px;
+            padding: 1rem;
+            background-color: #1e1e1e;
+            border-right: 1px solid var(--border-color);
         }
+
+        .main-content {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
         label {
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: bold;
         }
-        #sentence-select, select {
-            padding: 10px;
-            font-size: 16px;
-            border: 0px solid #ccc;
-            border-radius: 8px;
-            background-color: #8E1616;
-            transition: border-color 0.3s;
-        }
-        #sentence-select:focus, select:focus {
-            border-color: #8E1616;
-            outline: none;
-        }
-        .sentence, .bullet-points {
-            margin-top: 20px;
-            background: #1D1616;
-            padding: 20px;
-            border-radius: 0px;
-        }
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 16px;
-            color: #EEEEEE;
-            background-color: #698F3F;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        button:hover {
-            background-color: #681313;
-            transform: scale(1.05);
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        input[type="text"], select {
-            padding: 8px;
-            font-size: 16px;
-            border: 4px;
-            border-radius: 0px;
+
+        input,
+        select {
             width: 100%;
-            max-width: 200px;
-            background-color: #57737A;
-            color: #EEEEEE;
+            padding: 0.5rem;
+            background-color: #2a2a2a;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
         }
-        input[type="text"]:focus {
-            border-color: #681313;
-            outline: none;
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
         }
-        .bullet-points h3 {
-            margin-bottom: 10px;
+
+        button:hover {
+            opacity: 0.9;
         }
-        .bullet-points div {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .bullet-points input {
-            margin-right: 10px;
-        }
-        ::placeholder { 
-        
-        /* Firefox, Chrome, Opera */ 
-        color: EEEEEE; 
-        } 
-      
-        :-ms-input-placeholder { 
-        
-            /* Internet Explorer 10-11 */ 
-            color: EEEEEE; 
-        } 
-      
-        ::-ms-input-placeholder { 
-        
-            /* Microsoft Edge */ 
-            color: EEEEEE; 
-        } 
     </style>
 </head>
+
 <body>
-    <h1>Vodafone Pitch Templates</h1>
-
-    <div>
-        <label for="sentence-select">Select a Sentence Template:</label>
-        <select id="sentence-select">
-            <option value="">-- Select a Pitch --</option>
-        </select>
+    <div class="sidebar">
+        <h3>Templates</h3>
+        <!-- Templates will be injected here -->
     </div>
 
-    <div id="editor" class="Pitch">
-        <!-- Dynamic sentence editor will be rendered here -->
+    <div class="main-content">
+        <h2 id="template-title">Select a Template</h2>
+        <p id="template-description"></p>
+        <form id="pitch-form"></form>
+        <button id="copy-button">Copy to Clipboard</button>
     </div>
-
-    <div id="bullet-container" class="bullet-points">
-        <!-- Bullet points will be rendered here -->
-    </div>
-
-    <button id="save-button">Save to Clipboard</button>
 
     <script>
-        var now = new Date();
-        var datetime = now.toLocaleString();
-        
-        const sentenceTemplates = [
+        const templates = [
             {
-                id: 1,
-                template: [
-                    { type: 'textbox', placeholder: 'Device', value: '' },
-                    { type: 'dropdown', options: ['128GB', '256GB', '512GB', '1TB', '64GB'], value: 'Storage' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'With unlimited calls, texts and' },
-                    { type: 'textbox', placeholder: 'Data', value: '' },
-                    { type: 'text', value: 'data with' },
-                    { type: 'dropdown', options: ['no cap on speeds', 'a 10mbps speed cap', 'a 100mbps speed cap'], value: 'no cap on speeds' },
-                    { type: 'text', value: '' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'The total cost is' },
-                    { type: 'textbox', placeholder: 'Total Cost', value: '' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'There is a upfront fee of' },
-                    { type: 'textbox', placeholder: 'Upfront Fee', value: '' },
-                    { type: 'text', value: 'and a £6.99 delivery fee to be paid today or on your next bill' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'The direct debit will be split into 2 with your device being with' },
-                    { type: 'textbox', placeholder: 'Device Monthly', value: '' },
-                    { type: 'text', value: 'per month over a' },
-                    { type: 'dropdown', options: ['24 month', '36 month'], value: '36 month' },
-                    { type: 'text', value: 'month loan agreement and the airtime plan being' },
-                    { type: 'textbox', placeholder: 'Airtime Cost', value: '' },
-                    { type: 'text', value: 'per month on a 24 month contract' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'This plan includes: ' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'Unlimited picture messages' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'VeryMe rewards  ' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'Device Care ' },
-                    { type: 'newline' },
-                    { type: 'text', value: '6x unlimited data boosters (meaning you can opt for unlimited data for a month, 6 times in your contract) ' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one!' },
-                    { type: 'newline' },                    
-                ],
-                bulletPoints: [] // No bullet points for this template
-            },
+                name: 'Device Pitch',
+                description: 'Evo Plans',
+                fields: [
+                    { id: 'deviceModel', type: 'text', label: 'Device Model' },
+                    { id: 'storageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '64GB'] },
+                    { id: 'deviceData', type: 'text', label: 'Total Data' },
+                    { id: 'dataSpeed', type: 'dropdown', label: 'Data Speed', options: ['up to 100mbps', 'up to 10mbps', 'no cap on speed'] },
+                    { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
+                    { id: 'upfrontCost', type: 'text', label: 'Upfront Cost(£)' },
+                    { id: 'deviceCost', type: 'text', label: 'Device Cost(£)' },
+                    { id: 'loanLength', type: 'dropdown', label: 'Loan Length', options: ['36 months', '24 months'] },
+                    { id: 'airtimeCost', type: 'text', label: 'Airtime Cost(£)' },
+                    { id: 'Roaming', type: 'dropdown', label: 'Roaming', options: ['', 'EU Roaming', 'Global Roaming'] },
+                    { id: 'Ent', type: 'dropdown', label: 'Entertainment', options: ['', 'Entertainment'] }
 
-            {
-                id: 2,
-                template: [
-                    { type: 'text', value: 'Your disconnection will start from today, ' },
-                    { type: 'textbox', placeholder: 'Todays Date', value: '' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'The service you are disconnecting' },
-                    { type: 'newline' },
-                    { type: 'textbox', placeholder: 'Dissconnected Line', value: '' }, 
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'You have a fee of ' },
-                    { type: 'textbox', placeholder: '£fee', value: '' }, 
-                    { type: 'newline' },
-                    { type: 'text', value: 'to pay, which will come out on your final bill after the 30 days.' },
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'Your disconnection will be completed on ' },
-                    { type: 'textbox', placeholder: 'Disconnection Date', value: '' }, 
-                    { type: 'newline' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'Because of this, you will still have to pay for the final month.' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'If you wish to cancel your disconnection all you' },
-                    { type: 'newline' },
-                    { type: 'text', value: 'need to do is contact back and we will terminate the disconnection for you.' },
-                                       
                 ],
-                bulletPoints: [] // No bullet points for this template
+                baseText: `[deviceModel] [storageSize] 
+ With unlimited calls, texts and [deviceData] data with [dataSpeed]  
+ 
+ The total cost is £[totalMonthly] 
+ 
+ There is a upfront fee of £[upfrontCost] and a £6.99 delivery fee to be paid today or on your next bill 
+ 
+ The direct debit will be split into 2 with your device being with £[deviceCost] per month over a [loanLength] loan agreement and the airtime plan being £[airtimeCost] per month on a 24 month contract 
+ 
+ This plan includes:  
+ Unlimited picture messages 
+ VeryMe rewards   
+ Device Care  
+ [Roaming]
+ [Ent]
+
+ 6x unlimited data boosters (meaning you can opt for unlimited data for a month, 6 times in your contract)  
+ 
+ If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one! 
+`
+            },
+            {
+                name: 'Broadband Pitch',
+                description: 'HBB Plans',
+                fields: [
+                    { id: 'custAddress', type: 'text', label: 'Address' },
+                    { id: 'hbbCost', type: 'text', label: 'Price(£)' },
+                    { id: 'hbbSpeed', type: 'text', label: 'Speed(mbps)' },
+
+                ],
+                baseText: `I can see you don't have vodafone broadband on the account, I just want to make you aware as you have a mobile you have exclusive discounts on broadband. We offer broadband at your address, [custAddress] and I can do £[hbbCost] for [hbbSpeed]mbps. Would you like to know more information around this after we complete your initial query?`
+            },
+            {
+                name: 'Insurance Pitch',
+                description: 'Device Insurance',
+                fields: [
+                    { id: 'devCost', type: 'text', label: 'Device cost' },
+                    { id: 'damageCover', type: 'text', label: 'Damage Cover' },
+                    { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover' },
+                    { id: 'appleCare', type: 'dropdown', label: 'Apple Care', options: ['', '• Also included is apple care worth £120 per year which means you can get same day fix and replacements at the apple store '] }
+                ],
+                baseText: `Your new phone is worth £[devCost]
+ and we can cover it from just £[damageCover] per month for damage or £[lossCover] for Loss, theft and damage.
+
+• Your premium does not increase when you make a claim 
+• We include next day replacements 
+• World-wide cover with a 96% Claim Acceptance 
+[appleCare]
+ 
+ 
+Would you like me to get this added for you?`
             }
         ];
 
-        const sentenceSelect = document.getElementById('sentence-select');
-        const editor = document.getElementById('editor');
-        const saveButton = document.getElementById('save-button');
-        const bulletContainer = document.getElementById('bullet-container');
+        let currentTemplate = null;
 
-        sentenceTemplates.forEach((template, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = `Pitch ${index + 1}`;
-            sentenceSelect.appendChild(option);
+        const sidebar = document.querySelector('.sidebar');
+        const pitchForm = document.getElementById('pitch-form');
+        const templateTitle = document.getElementById('template-title');
+        const templateDescription = document.getElementById('template-description');
+        const copyButton = document.getElementById('copy-button');
+
+        // Render templates in the sidebar
+        templates.forEach(template => {
+            const link = document.createElement('a');
+            link.textContent = template.name;
+            link.href = '#';
+            link.style.display = 'block';
+            link.style.marginBottom = '0.5rem';
+            link.style.color = 'var(--text-color)';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentTemplate = template;
+                renderTemplate(template);
+            });
+            sidebar.appendChild(link);
         });
 
-        function renderEditor(template) {
-            editor.innerHTML = '';
-            template.forEach((part, index) => {
-                if (part.type === 'text') {
-                    const span = document.createElement('span');
-                    span.textContent = ` ${part.value} `;
-                    editor.appendChild(span);
-                } else if (part.type === 'dropdown') {
-                    const select = document.createElement('select');
-                    select.dataset.index = index;
-                    part.options.forEach(optionValue => {
-                        const option = document.createElement('option');
-                        option.value = optionValue;
-                        option.textContent = optionValue;
-                        if (optionValue === part.value) {
-                            option.selected = true;
-                        }
-                        select.appendChild(option);
+        function renderTemplate(template) {
+            if (!template) return;
+
+            templateTitle.textContent = template.name;
+            templateDescription.textContent = template.description;
+            pitchForm.innerHTML = '';
+
+            template.fields.forEach(field => {
+                const label = document.createElement('label');
+                label.textContent = field.label;
+
+                let inputElement;
+                if (field.type === 'text') {
+                    inputElement = document.createElement('input');
+                    inputElement.type = 'text';
+                    inputElement.id = field.id;
+                } else if (field.type === 'dropdown') {
+                    inputElement = document.createElement('select');
+                    inputElement.id = field.id;
+                    field.options.forEach(option => {
+                        const optionEl = document.createElement('option');
+                        optionEl.value = option;
+                        optionEl.textContent = option;
+                        inputElement.appendChild(optionEl);
                     });
-                    select.addEventListener('change', updatePreview);
-                    editor.appendChild(select);
-                } else if (part.type === 'textbox') {
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.placeholder = part.placeholder;
-                    input.dataset.index = index;
-                    input.value = part.value;
-                    input.addEventListener('input', updatePreview);
-                    editor.appendChild(input);
-                } else if (part.type === 'newline') {
-                    const br = document.createElement('br');
-                    editor.appendChild(br);
-                } else if (part.type === 'today') {
-                    const datetime = document.getElementById("datetime");
-                    span.textContent = ` ${part.value} `;
-                    editor.appendChild(datetime);
                 }
+
+                pitchForm.appendChild(label);
+                pitchForm.appendChild(inputElement);
             });
         }
 
-        function renderBulletPoints(bulletPoints) {
-            bulletContainer.innerHTML = '';
-            if (bulletPoints && bulletPoints.length > 0) {
-                const heading = document.createElement('h3');
-                heading.textContent = 'Additional Options:';
-                bulletContainer.appendChild(heading);
+        // Copy to clipboard
+        copyButton.addEventListener('click', () => {
+            if (!currentTemplate) return;
 
-                bulletPoints.forEach((point, index) => {
-                    const div = document.createElement('div');
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `bullet-${index}`;
-                    checkbox.dataset.index = index;
-                    const label = document.createElement('label');
-                    label.setAttribute('for', `bullet-${index}`);
-                    label.textContent = point;
-
-                    div.appendChild(checkbox);
-                    div.appendChild(label);
-                    bulletContainer.appendChild(div);
-                });
-            }
-        }
-
-        function updatePreview() {
-            const selectedTemplateIndex = sentenceSelect.value;
-            if (selectedTemplateIndex === '') {
-                return;
-            }
-
-            const template = sentenceTemplates[selectedTemplateIndex].template;
-            editor.childNodes.forEach((node) => {
-                if (node.tagName === 'SELECT') {
-                    const dropdownIndex = node.dataset.index;
-                    template[dropdownIndex].value = node.value;
-                } else if (node.tagName === 'INPUT') {
-                    const textboxIndex = node.dataset.index;
-                    template[textboxIndex].value = node.value;
-                }
+            let script = currentTemplate.baseText;
+            currentTemplate.fields.forEach(field => {
+                const placeholder = `[${field.id}]`;
+                const value = document.getElementById(field.id).value;
+                script = script.replace(placeholder, value);
             });
-        }
 
-        function saveToClipboard() {
-            const selectedTemplateIndex = sentenceSelect.value;
-            if (selectedTemplateIndex === '') return;
-
-            const template = sentenceTemplates[selectedTemplateIndex].template;
-            const previewContent = template.map(part => {
-                if (part.type === 'newline') {
-                    return '\n';
-                }
-                return part.value;
-            }).join(' ');
-
-            const bulletPoints = sentenceTemplates[selectedTemplateIndex].bulletPoints;
-            const selectedBullets = Array.from(bulletContainer.querySelectorAll('input:checked'))
-                .map(checkbox => bulletPoints[checkbox.dataset.index])
-                .join('\n');
-
-            const textToCopy = previewContent + (selectedBullets ? '\n' + selectedBullets : '');
-
-            navigator.clipboard.writeText(textToCopy);
-        }
-
-        sentenceSelect.addEventListener('change', () => {
-            const selectedTemplateIndex = sentenceSelect.value;
-            if (selectedTemplateIndex !== '') {
-                const template = sentenceTemplates[selectedTemplateIndex];
-                renderEditor(template.template);
-                renderBulletPoints(template.bulletPoints);
-            } else {
-                editor.innerHTML = '';
-                bulletContainer.innerHTML = '';
-            }
+            navigator.clipboard.writeText(script).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         });
-
-        saveButton.addEventListener('click', saveToClipboard);
     </script>
 </body>
+
 </html>

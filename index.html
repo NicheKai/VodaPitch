@@ -91,7 +91,7 @@
                 fields: [
                     { id: 'deviceModel', type: 'text', label: 'Device Model' },
                     { id: 'storageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '64GB'] },
-                    { id: 'deviceData', type: 'text', label: 'Total Data' },
+                    { id: 'deviceData', type: 'text', label: 'Total Data(GB)' },
                     { id: 'dataSpeed', type: 'dropdown', label: 'Data Speed', options: ['up to 100mbps', 'up to 10mbps', 'no cap on speed'] },
                     { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
                     { id: 'upfrontCost', type: 'text', label: 'Upfront Cost(£)' },
@@ -103,7 +103,7 @@
 
                 ],
                 baseText: `[deviceModel] [storageSize] 
- With unlimited calls, texts and [deviceData] data with [dataSpeed]  
+ With unlimited calls, texts and [deviceData]GB data with [dataSpeed]  
  
  The total cost is £[totalMonthly] 
  

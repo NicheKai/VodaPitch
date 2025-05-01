@@ -123,23 +123,23 @@ Should we get this ordered for you?
             },
             {
                 name: 'Insurance Pitch',
-                description: 'Device Insurance',
+                description: `Question 1 – Have you ever dropped your phone before?
+
+Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
                 fields: [
-                    { id: 'devCost', type: 'text', label: 'Device cost(£)' },
+                    { id: 'dropLost', type: 'dropdown', label: 'Dropped/Lost/Not', options: ['Not a problem, I just wanted to let you know our Vodafone insurance options so you will never have to worry about It in the future we offer', 'I understand you mentioned that you’ve lost your device before and so I would just like to make you aware of our Vodafone insurance', 'I understand you mentioned that you’ve dropped your device before and so I would just like to make you aware of our Vodafone insurance'] },
                     { id: 'damageCover', type: 'text', label: 'Damage Cover(£)' },
                     { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover(£)' },
-                    { id: 'appleCare', type: 'dropdown', label: 'Apple Care', options: ['', '• Also included is apple care worth £120 per year which means you can get same day fix and replacements at the apple store '] }
+                    { id: 'screenCost', type: 'text', label: 'Screen cost(£)' }
+                    
                 ],
-                baseText: `Your new phone is worth £[devCost]
- and we can cover it from just £[damageCover] per month for damage or £[lossCover] for Loss, theft and damage.
+                baseText: `[dropLost]
 
-• Your premium does not increase when you make a claim 
-• We include next day replacements 
-• World-wide cover with a 96% Claim Acceptance 
-[appleCare]
- 
- 
-Would you like me to get this added for you?`
+Damage - £[damageCover]
+Loss theft and damage - £[lossCover]
+Screen Damage - £[screenCost]
+
+And with these you get next working day replacement, should we get one of these added for you?`
             }
         ];
 

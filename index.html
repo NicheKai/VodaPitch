@@ -91,9 +91,7 @@
                 fields: [
                     { id: 'deviceModel', type: 'text', label: 'Device Model' },
                     { id: 'storageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '64GB'] },
-                    { id: 'deviceData', type: 'text', label: 'Total Data(GB)' },
-                    { id: 'dataSpeed', type: 'dropdown', label: 'Data Speed', options: ['up to 100mbps', 'up to 10mbps', 'no cap on speed'] },
-                    { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
+                    { id: 'deviceData', type: 'text', label: 'Total Data(GB)' },                    { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
                     { id: 'upfrontCost', type: 'text', label: 'Upfront Cost(£)' },
                     { id: 'deviceCost', type: 'text', label: 'Device Cost(£)' },
                     { id: 'loanLength', type: 'dropdown', label: 'Loan Length', options: ['36 months', '24 months'] },
@@ -102,25 +100,14 @@
                     { id: 'Ent', type: 'dropdown', label: 'Entertainment', options: ['', 'Entertainment'] }
 
                 ],
-                baseText: `[deviceModel] [storageSize] 
- With unlimited calls, texts and [deviceData]GB data with [dataSpeed]  
- 
- The total cost is £[totalMonthly] 
- 
- There is a upfront fee of £[upfrontCost] and a £6.99 delivery fee to be paid today or on your next bill 
- 
- The direct debit will be split into 2 with your device being with £[deviceCost] per month over a [loanLength] loan agreement and the airtime plan being £[airtimeCost] per month on a 24 month contract 
- 
- This plan includes:  
- Unlimited picture messages 
- VeryMe rewards   
- Device Care  
- [Roaming]
- [Ent]
+                baseText: `We can do the [deviceModel] [storageSize]
+Unlimited calls, texts and [deviceData]GB data [Roaming] [Ent]
+Total cost = £[totalMonthly] per month
+There is an upfront cost of £[upfrontCost] plus a £6.99 delivery fee which can be either paid today or added to your next bill
+The direct debit will be split into 2 with your device being £[deviceCost] per month over a [loanLength] loan agreement and the airtime plan being £[airtimeCost] per month on a 24-month contract  
 
- 6x unlimited data boosters (meaning you can opt for unlimited data for a month, 6 times in your contract)  
- 
- If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one! 
+If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one! 
+Should we get this ordered for you?
 `
             },
             {

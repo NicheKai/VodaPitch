@@ -130,14 +130,15 @@ Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
                     { id: 'dropLost', type: 'dropdown', label: 'Dropped/Lost/Not', options: ['Not a problem, I just wanted to let you know our Vodafone insurance options so you will never have to worry about It in the future we offer', 'I understand you mentioned that you’ve lost your device before and so I would just like to make you aware of our Vodafone insurance', 'I understand you mentioned that you’ve dropped your device before and so I would just like to make you aware of our Vodafone insurance'] },
                     { id: 'damageCover', type: 'text', label: 'Damage Cover(£)' },
                     { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover(£)' },
-                    { id: 'screenCost', type: 'text', label: 'Screen cost(£)' }
+                    { id: 'screenToggle', type: 'dropdown', label: 'Screen Cover', options: ['Screen Damage - £', ''] },
+                    { id: 'screenCost', type: 'text', label: 'Screen cost(£) - If applicable' }
                     
                 ],
                 baseText: `[dropLost]
 
 Damage - £[damageCover]
 Loss theft and damage - £[lossCover]
-Screen Damage - £[screenCost]
+[screenToggle][screenCost]
 
 And with these you get next working day replacement, should we get one of these added for you?`
             }

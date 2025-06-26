@@ -91,7 +91,7 @@
                 fields: [
                     { id: 'deviceModel', type: 'text', label: 'Device Model' },
                     { id: 'storageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '64GB'] },
-                    { id: 'deviceData', type: 'text', label: 'Total Data(GB)' },                    { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
+                    { id: 'deviceData', type: 'text', label: 'Total Data(GB)' }, { id: 'totalMonthly', type: 'text', label: 'Total Cost(£)' },
                     { id: 'upfrontCost', type: 'text', label: 'Upfront Cost(£)' },
                     { id: 'deviceCost', type: 'text', label: 'Device Cost(£)' },
                     { id: 'loanLength', type: 'dropdown', label: 'Loan Length', options: ['36 months', '24 months'] },
@@ -132,7 +132,7 @@ Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
                     { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover(£)' },
                     { id: 'screenToggle', type: 'dropdown', label: 'Screen Cover', options: ['Screen Damage - £', ''] },
                     { id: 'screenCost', type: 'text', label: 'Screen cost(£) - If applicable' }
-                    
+
                 ],
                 baseText: `[dropLost]
 
@@ -141,6 +141,22 @@ Loss theft and damage - £[lossCover]
 [screenToggle][screenCost]
 
 And with these you get next working day replacement, should we get one of these added for you?`
+            },
+            {
+                name: 'Trade in Pitch',
+                description: `Get values from vodafone website trade in tool.`,
+                fields: [
+                    { id: 'traddev', type: 'text', label: 'Trade in device' },
+                    { id: 'devval', type: 'text', label: 'Trade in value' },
+                    { id: 'newdev', type: 'text', label: 'Upgrade device' },
+                    { id: 'bonustoggle', type: 'dropdown', label: 'Bonus', options: ['You might be able to get a bonus of £', ''] },
+                    { id: 'bonus', type: 'text', label: 'Bonus amount(£)' },
+                    { id: 'tradtotal', type: 'text', label: 'Total Trade in(£)' },
+                    { id: 'monthly', type: 'text', label: 'Monthly Value(£)' }
+
+                ],
+                baseText: `So I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That’s £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
+Should I talk you through how to get a code?`
             }
         ];
 

@@ -157,7 +157,38 @@ And with these you get next working day replacement, should we get one of these 
                 ],
                 baseText: `So I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That’s £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
 Should I talk you through how to get a code?`
-            }
+            },
+            {
+                name: 'Tablet Addlines',
+                description: `Addline tablet pitches`,
+                fields: [
+                    { id: 'tabpitch', type: 'dropdown', label: 'Tablets', options: [``, `Before we finish of your sim today we have an amazing offer on a  Apple iPad A16 you could take advantage of.
+
+This is available for just £9.50 across 48 Month's on a interest free loan and a 25GB Data plan attached to this for just £6 meaning you can get all of this today for just £15.50 per month. 
+
+Please note this comes with a £30 Upfront fee alongside a £6.99 Delivery
+
+Would you like to proceed with this amazing offer?
+`, 
+`Before we finish of your sim today we  have an amazing offer on a Samsung Galaxy Tab A9 you could take advantage of.
+
+This tablet is £6 across 36 Month's on A interest free loan and a 1GB Data plan attached to this for just £8 meaning you can get all of this today for just £14 per month. 
+Would you like to proceed with this amazing offer?`] },
+
+                ],
+                baseText: `[addpitch]`
+            },
+            {
+                name: 'Watch Addlines',
+                description: `Watch addline pitches for after a device upgrade.`,
+                fields: [
+                    { id: 'linecount', type: 'text', label: 'No. of lines passed' },
+                    { id: 'devicename', type: 'text', label: 'Order device' },
+                    { id: 'watches', type: 'dropdown', label: 'Watch Selection', options: ['I can do you the google pixel watch 3. I can do the watch over a 36 month interest free loan at £12.50 and then a one number connectivity plan on a 24 month airtime contract at £7.50 and so all together this would be £20. How does this sound to you?', 'I can do you the Apple watch series 10 42mm. I can do the watch over a 36 month interest free loan at £14 and then a one number connectivity plan on a 24 month airtime contract at £7.50 and so all together this would be £21.50. How does this sound to you?', 'I can do you the Samsung Galaxy watch 7 40m. I can do the watch over a 36  month interest free loan at £4 and then a one number connectivity plan on a 24 month airtime at £5 and so all together this would be £9. How does this sound to you?'] },
+
+                ],
+                baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], [watches]`
+            },
         ];
 
         let currentTemplate = null;

@@ -157,7 +157,7 @@ And with these you get next working day replacement, should we get one of these 
                 ],
                 baseText: `So I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That’s £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
 Should I talk you through how to get a code?`
-            },
+            },  
             {
                 name: 'Tablet Addlines',
                 description: `Addline tablet pitches`,
@@ -189,6 +189,22 @@ Would you like to proceed with this amazing offer?`] },
                 ],
                 baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], [watches]`
             },
+            {
+                name: 'Discount Term',
+                description: `Sim Only Discount Term (Missing from basics terms.)`,
+                fields: [
+                    { id: 'ammount12', type: 'text', label: 'Discount £ or %' },
+                    { id: 'discounttime', type: 'text', label: 'Discount Duration' },
+                    { id: 'afterdiscount', type: 'text', label: 'Price after discount' }
+
+                ],
+                baseText: `You will receive a discount of [ammount12] for [discounttime]
+
+Your full monthly cost including your discount will be £[afterdiscount] Inc. VAT
+
+We are not able to apply any further discounts to a plan that is already discounted.`
+            },
+            
         ];
 
         let currentTemplate = null;

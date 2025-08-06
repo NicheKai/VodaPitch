@@ -148,9 +148,9 @@ And with these you get next working day replacement, should we get one of these 
                 fields: [
                     { id: 'traddev', type: 'text', label: 'Trade in device' },
                     { id: 'devval', type: 'text', label: 'Trade in value' },
-                    { id: 'newdev', type: 'text', label: 'Upgrade device' },
+                    { id: 'newdev', type: 'text', label: 'Upgrade Device' },
                     { id: 'bonustoggle', type: 'dropdown', label: 'Bonus', options: ['You might be able to get a bonus of £', ''] },
-                    { id: 'bonus', type: 'text', label: 'Bonus amount(£)' },
+                    { id: 'bonus', type: 'text', label: 'Bonus Amount(£)' },
                     { id: 'tradtotal', type: 'text', label: 'Total Trade in(£)' },
                     { id: 'monthly', type: 'text', label: 'Monthly Value(£)' }
 
@@ -158,6 +158,24 @@ And with these you get next working day replacement, should we get one of these 
                 baseText: `So I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That’s £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
 Should I talk you through how to get a code?`
             },  
+            {
+                name: 'Watch Pitch',
+                description: `EVO Watch Pitch`,
+                fields: [
+                    { id: 'watchdevice', type: 'text', label: 'Watch Model' },
+                    { id: 'watchprice', type: 'text', label: 'Total Cost(£)' },
+                    { id: 'upfrontammount', type: 'text', label: 'Upfront Cost(£)' },
+                    { id: 'watchmonthly', type: 'text', label: 'Device Cost(£)' },
+                    { id: 'monthlyterm', type: 'dropdown', label: 'Loan Length', options: ['36 monthly payments', '24 monthly payments'] },
+                    { id: 'watchairtime', type: 'text', label: 'Airtime Cost(£)' }
+
+                ],
+                baseText: `We can do the [watchdevice] for only £[watchprice] per month with £[upfrontammount] upfront!
+
+This is [monthlyterm] of £[watchmonthly] for the device loan and 24 monthly payments of £[watchairtime] for the connectivity.
+
+How does this sound?`
+            },
             {
                 name: 'Tablet Addlines',
                 description: `Addline tablet pitches`,
@@ -204,6 +222,7 @@ Your full monthly cost including your discount will be £[afterdiscount] Inc. VA
 
 We are not able to apply any further discounts to a plan that is already discounted.`
             },
+            
             
         ];
 

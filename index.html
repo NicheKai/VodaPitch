@@ -231,6 +231,15 @@ Your full monthly cost including your discount will be £[afterdiscount] Inc. VA
 
 We are not able to apply any further discounts to a plan that is already discounted.`
             },
+            {
+                name: 'Embed Links',
+                description: `Hide your link in some text for nuance.`,
+                fields: [
+                    { id: 'hreflink', type: 'text', label: 'Link' },
+                    { id: 'hreftext', type: 'text', label: 'Text' }
+                ],
+                baseText: `<a href="[hreflink]" target="_blank">[hreftext]</a> `
+            },
             
             
         ];

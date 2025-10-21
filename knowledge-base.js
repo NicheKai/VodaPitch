@@ -492,7 +492,7 @@ class KnowledgeBase {
                     <button class="upvote-btn ${this.hasUserVoted(solution.id) ? 'voted' : ''}" 
                             data-solution-id="${solution.id}">
                         <span class="upvote-icon">▲</span>
-                        Upvote
+                        This worked!
                         <span class="upvote-count">${solution.upvotes}</span>
                     </button>
                 </div>
@@ -682,4 +682,5 @@ class KnowledgeBase {
 // Initialize knowledge base when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new KnowledgeBase();
+
 });

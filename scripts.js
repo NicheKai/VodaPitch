@@ -192,6 +192,79 @@ We are not able to apply any further discounts to a plan that is already discoun
         baseText: `<a href="[hreflink]" target="_blank">[hreftext]</a> `
     },
     {
+        name: 'FCR Reasurance',
+        description: ``,
+        fields: [
+            { id: 'advisorname', type: 'text', label: 'Your name' },
+            { id: 'ordernumber', type: 'text', label: 'Order number' },
+            {
+                id: 'ordertype',
+                type: 'dropdown',
+                label: 'Watch Selection',
+                options: ['Evo New/Upgrade', 'SIMO New', 'SIMO Upgrade', 'HBB New', 'HBB Upgrade'],
+                valueMap: {
+                    'Evo New/Upgrade': `Track your order here -  
+https://myaccount.vodafone.co.uk/orders/search
+
+Getting started with vodafone (set up your new device/ first pay monthly bill)
+https://www.vodafone.co.uk/help-and-information/getting-started?icmp=uk~1_consumer~topnav~3_help~2_information~1_getting_started&linkpos=topnav~1~3~2~1
+
+If you need technical Help - book an appointment in store, or on the same link check out our how to videos on youtube!
+https://www.vodafone.co.uk/help-and-information/tech-team?icmp=uk~1_consumer~topnav~3_help~3_help_and_support~2_tech_team&linkpos=topnav~1~3~3~2`,
+                    'SIMO New': `Track your order here -  
+https://myaccount.vodafone.co.uk/orders/search
+
+Getting started with vodafone (activating your sim/ first pay monthly bill)
+https://www.vodafone.co.uk/help-and-information/getting-started?icmp=uk~1_consumer~topnav~3_help~2_information~1_getting_started&linkpos=topnav~1~3~2~1
+
+If you need technical Help - book an appointment in store, or on the same link check out our how to videos on youtube!
+https://www.vodafone.co.uk/help-and-information/tech-team?icmp=uk~1_consumer~topnav~3_help~3_help_and_support~2_tech_team&linkpos=topnav~1~3~3~2`,
+                    'SIMO Upgrade': `Track your order here -  
+https://myaccount.vodafone.co.uk/orders/search
+
+If you need technical Help - book an appointment in store, or on the same link check out our how to videos on youtube!
+https://www.vodafone.co.uk/help-and-information/tech-team?icmp=uk~1_consumer~topnav~3_help~3_help_and_support~2_tech_team&linkpos=topnav~1~3~3~2`,
+                    'HBB New': `Track your order here -  
+https://myaccount.vodafone.co.uk/orders/search
+
+Getting started with vodafone (set up your new broadband/ first pay monthly bill)
+https://www.vodafone.co.uk/help-and-information/getting-started?icmp=uk~1_consumer~topnav~3_help~2_information~1_getting_started&linkpos=topnav~1~3~2~1
+
+If you need technical Help - book an appointment in store, or on the same link check out our how to videos on youtube!
+https://www.vodafone.co.uk/help-and-information/tech-team?icmp=uk~1_consumer~topnav~3_help~3_help_and_support~2_tech_team&linkpos=topnav~1~3~3~2`,
+                    'HBB Upgrade' : `Track your order here -  
+https://myaccount.vodafone.co.uk/orders/search
+
+If you need technical Help - book an appointment in store, or on the same link check out our how to videos on youtube!
+https://www.vodafone.co.uk/help-and-information/tech-team?icmp=uk~1_consumer~topnav~3_help~3_help_and_support~2_tech_team&linkpos=topnav~1~3~3~2`
+                },
+                
+            },
+            {
+                id: 'p2p',
+                type: 'dropdown',
+                label: 'Pre to post',
+                options: ['No', 'Yes'],
+                valueMap: {
+                    'No': ' ',
+                    'Yes': `
+Keep my number form -
+https://www.vodafone.co.uk/payg-to-paym-form/`
+                }
+            },
+        ],
+        baseText: `Hello this is [advisorname], your Vodafone advisor! As mentioned in the chat we have just completed here are a few links just in case you need some further support!
+
+Your order number is - [ordernumber]
+
+[ordertype]
+[p2p]
+
+However if you do wish to talk to a member of the team regarding any issue please contact our call team via 191 or  0333 304 0191
+
+Thank you for choosing vodafone!`
+    },
+    {
         name: 'Pitch Card (Testing)',
         description: 'A new way to pitch devices, not ready for chats yet',
         fields: [

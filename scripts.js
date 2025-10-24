@@ -352,7 +352,7 @@ function renderTemplate(template) {
     templateDescription.textContent = template.description;
     pitchForm.innerHTML = '';
 
-    if (template.name === 'Pitch Card (Testing)') {
+    if (template.name === 'Pitch Card (Not Working)') {
         const container = document.createElement('div');
         container.className = 'pitch-card-container';
 
@@ -476,7 +476,7 @@ function updatePreview() {
         script = script.replace(placeholder, value);
     });
 
-    if (currentTemplate.name === 'Pitch Card (Testing)') {
+    if (currentTemplate.name === 'Pitch Card (Not Working)') {
         const deviceImageSelect = document.getElementById('CDeviceImage');
         if (deviceImageSelect) {
             const selectedText = deviceImageSelect.options[deviceImageSelect.selectedIndex].text;
@@ -484,7 +484,7 @@ function updatePreview() {
         }
     }
 
-    if (currentTemplate.name === 'Pitch Card (Testing)') {
+    if (currentTemplate.name === 'Pitch Card (Not Working)') {
         const previewSection = document.getElementById('pitch-card-preview');
         if (previewSection) {
             previewSection.innerHTML = script;
@@ -512,7 +512,7 @@ copyButton.addEventListener('click', () => {
     });
 
     // Special handling for Pitch Card [CDeviceName]
-    if (currentTemplate.name === 'Pitch Card (Testing)') {
+    if (currentTemplate.name === 'Pitch Card (Not Working)') {
         const deviceImageSelect = document.getElementById('CDeviceImage');
         if (deviceImageSelect) {
             const selectedText = deviceImageSelect.options[deviceImageSelect.selectedIndex].text;
@@ -530,4 +530,5 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 

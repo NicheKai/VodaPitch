@@ -64,9 +64,9 @@ Loss, Theft and Damage Cover – total peace of mind
 Price Per Month £[lossCover]
 
 Damage Cover – accidents happen, we’ve got you
-Price Per Month£[damageCover]
+Price Per Month £[damageCover]
 
-screenToggle][screenCost]
+[screenToggle][screenCost]
 
 Plus enjoy:
 ✔ Next-day replacement
@@ -530,4 +530,5 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 

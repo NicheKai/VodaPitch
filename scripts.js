@@ -42,17 +42,6 @@ Should we get this ordered for you?
 
 Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
         fields: [
-            {
-                id: 'dropLost',
-                type: 'dropdown',
-                label: 'Dropped/Lost/Not',
-                options: ['Not a problem', 'Lost device before', 'Dropped device before'],
-                valueMap: {
-                    'Not a problem': 'Not a problem, I just wanted to let you know our Vodafone insurance options so you will never have to worry about It in the future we offer',
-                    'Lost device before': 'I understand you mentioned that you\'ve lost your device before and so I would just like to make you aware of our Vodafone insurance',
-                    'Dropped device before': 'I understand you mentioned that you\'ve dropped your device before and so I would just like to make you aware of our Vodafone insurance'
-                }
-            },
             { id: 'damageCover', type: 'text', label: 'Damage Cover(£)' },
             { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover(£)' },
             {
@@ -62,20 +51,31 @@ Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
                 options: ['No screen cover', 'Screen Damage'],
                 valueMap: {
                     'No screen cover': ' ',
-                    'Screen Damage': 'Screen Damage - £'
+                    'Screen Damage': `Screen Damage – cracks fixed fast
+Price £`
                 }
             },
             { id: 'screenCost', type: 'text', label: 'Screen cost(£) - If applicable' }
 
         ],
-        baseText: `[dropLost]
+        baseText: `Now you've chosen your phone, lets make sure you're protected!
 
-Damage - £[damageCover]
-Loss theft and damage - £[lossCover]
-[screenToggle][screenCost]
+Loss, Theft and Damage Cover – total peace of mind
+Price Per Month £[lossCover]
 
-And with these you get next working day replacement, should we get one of these added for you?`
+Damage Cover – accidents happen, we’ve got you
+Price Per Month£[damageCover]
+
+screenToggle][screenCost]
+
+Plus enjoy:
+✔ Next-day replacement
+✔ Cancel anytime
+✔ First 3 months at half price
+
+Should we get one of these added for you so you're covered from the moment your phone arrives?`
     },
+
     {
         name: 'Trade in Pitch',
         description: `Get values from vodafone website trade in tool.`,
@@ -530,5 +530,4 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
-
 

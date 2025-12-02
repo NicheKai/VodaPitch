@@ -71,7 +71,6 @@ Price Per Month £[damageCover]
 Plus enjoy:
 ✔ Next-day replacement
 ✔ Cancel anytime
-✔ First 3 months at half price
 
 Should we get one of these added for you so you're covered from the moment your phone arrives?`
     },
@@ -530,5 +529,6 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 

@@ -1,6 +1,6 @@
 const templates = [
      {
-        name: 'Trade in Pitch',
+        name: 'Trade in Pitch (Before Device)',
         description: `Get values from vodafone website trade in tool.`,
         fields: [
             { id: 'traddev', type: 'text', label: 'Trade in device' },
@@ -58,10 +58,10 @@ Should we get this ordered for you?
                 id: 'accpitch',
                 type: 'dropdown',
                 label: 'Accessories',
-                options: ['Plug pitch (Newer than iPhone 15)', 'Plug Pitch (Oler than iPhone 15)', 'Case/Screen Protector £22'],
+                options: ['Plug pitch (Newer than iPhone 15)', 'Plug Pitch (Older than iPhone 15)', 'Case/Screen Protector £22'],
                 valueMap: {
-                    'Plug pitch (Newer than iPhone 15)': 'This device does not come with a plug! It's a USB C connection too - for just £20 you can get a Belkin super fast charging plug with your new phone! Super fast charging  getting your phone from 0-50% in just 24 minutes.  Shall we get this added so you are set when the phone arrives?',
-                    'Plug Pitch (Odler than iPhone 15)': `Before we proceed the phones don't come with a plug in the box anymore. I see you are on an older apple model and an  old Apple USB plug will not be compatible with the new type c port and cable included in the box. What we can do is  add the Belkin 30W plug for just £20 which we will add to the next bill so you can be confident you'll be able to charge your phone as soon as you have it. Shall we get this added for you?`,
+                    'Plug pitch (Newer than iPhone 15)': `This device does not come with a plug! It's a USB C connection too - for just £20 you can get a Belkin super fast charging plug with your new phone! Super fast charging  getting your phone from 0-50% in just 24 minutes.  Shall we get this added so you are set when the phone arrives?`,
+                    'Plug Pitch (Older than iPhone 15)': `Before we proceed the phones don't come with a plug in the box anymore. I see you are on an older apple model and an  old Apple USB plug will not be compatible with the new type c port and cable included in the box. What we can do is  add the Belkin 30W plug for just £20 which we will add to the next bill so you can be confident you'll be able to charge your phone as soon as you have it. Shall we get this added for you?`,
                     'Case/Screen Protector £22': `As we move on in terms I have just found a bundle deal with your phone were I can add a case and screen protector for only £22 pound which we can add to your next bill, shall we get these added so you're protected as soon as you open the box?`
                 }
             }

@@ -1,4 +1,29 @@
 const templates = [
+     {
+        name: 'Trade in Pitch',
+        description: `Get values from vodafone website trade in tool.`,
+        fields: [
+            { id: 'traddev', type: 'text', label: 'Trade in device' },
+            { id: 'devval', type: 'text', label: 'Trade in value' },
+            { id: 'newdev', type: 'text', label: 'Upgrade Device' },
+            {
+                id: 'bonustoggle',
+                type: 'dropdown',
+                label: 'Bonus',
+                options: ['No bonus', 'With bonus'],
+                valueMap: {
+                    'No bonus': ' ',
+                    'With bonus': 'You might be able to get a bonus of £'
+                }
+            },
+            { id: 'bonus', type: 'text', label: 'Bonus Amount(£)' },
+            { id: 'tradtotal', type: 'text', label: 'Total Trade in(£)' },
+            { id: 'monthly', type: 'text', label: 'Monthly Value(£)' }
+
+        ],
+        baseText: `Whilst I am getting you a pitch for your device  I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That's £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
+Should I talk you through how to get a code?`
+    },
     {
         name: 'Device Pitch',
         description: 'Evo Plans',
@@ -26,15 +51,22 @@ Should we get this ordered for you?
 `
     },
     {
-        name: 'Broadband Pitch',
-        description: 'HBB Plans',
+        name: 'Accessories Pitches',
+        description: `Accessories Pitches`,
         fields: [
-            { id: 'custAddress', type: 'text', label: 'Address' },
-            { id: 'hbbCost', type: 'text', label: 'Price(£)' },
-            { id: 'hbbSpeed', type: 'text', label: 'Speed(mbps)' },
-
+            {
+                id: 'accpitch',
+                type: 'dropdown',
+                label: 'Accessories',
+                options: ['Plug pitch (Newer than iPhone 15)', 'Plug Pitch (Oler than iPhone 15)', 'Case/Screen Protector £22'],
+                valueMap: {
+                    'Plug pitch (Newer than iPhone 15)': 'This device does not come with a plug! It's a USB C connection too - for just £20 you can get a Belkin super fast charging plug with your new phone! Super fast charging  getting your phone from 0-50% in just 24 minutes.  Shall we get this added so you are set when the phone arrives?',
+                    'Plug Pitch (Odler than iPhone 15)': `Before we proceed the phones don't come with a plug in the box anymore. I see you are on an older apple model and an  old Apple USB plug will not be compatible with the new type c port and cable included in the box. What we can do is  add the Belkin 30W plug for just £20 which we will add to the next bill so you can be confident you'll be able to charge your phone as soon as you have it. Shall we get this added for you?`,
+                    'Case/Screen Protector £22': `As we move on in terms I have just found a bundle deal with your phone were I can add a case and screen protector for only £22 pound which we can add to your next bill, shall we get these added so you're protected as soon as you open the box?`
+                }
+            }
         ],
-        baseText: `I can see you don't have vodafone broadband on the account, I just want to make you aware as you have a mobile you have exclusive discounts on broadband. We offer broadband at your address, [custAddress] and I can do £[hbbCost] for [hbbSpeed]mbps. Would you like to know more information around this after we complete your initial query?`
+        baseText: `[accpitch]`
     },
     {
         name: 'Insurance Pitch',
@@ -74,32 +106,19 @@ Plus enjoy:
 
 Should we get one of these added for you so you're covered from the moment your phone arrives?`
     },
-
     {
-        name: 'Trade in Pitch',
-        description: `Get values from vodafone website trade in tool.`,
+        name: 'Broadband Pitch',
+        description: 'HBB Plans',
         fields: [
-            { id: 'traddev', type: 'text', label: 'Trade in device' },
-            { id: 'devval', type: 'text', label: 'Trade in value' },
-            { id: 'newdev', type: 'text', label: 'Upgrade Device' },
-            {
-                id: 'bonustoggle',
-                type: 'dropdown',
-                label: 'Bonus',
-                options: ['No bonus', 'With bonus'],
-                valueMap: {
-                    'No bonus': ' ',
-                    'With bonus': 'You might be able to get a bonus of £'
-                }
-            },
-            { id: 'bonus', type: 'text', label: 'Bonus Amount(£)' },
-            { id: 'tradtotal', type: 'text', label: 'Total Trade in(£)' },
-            { id: 'monthly', type: 'text', label: 'Monthly Value(£)' }
+            { id: 'custAddress', type: 'text', label: 'Address' },
+            { id: 'hbbCost', type: 'text', label: 'Price(£)' },
+            { id: 'hbbSpeed', type: 'text', label: 'Speed(mbps)' },
 
         ],
-        baseText: `So I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That's £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
-Should I talk you through how to get a code?`
+        baseText: `I can see you don't have vodafone broadband on the account, I just want to make you aware as you have a mobile you have exclusive discounts on broadband. We offer broadband at your address, [custAddress] and I can do £[hbbCost] for [hbbSpeed]mbps. Would you like to know more information around this after we complete your initial query?`
     },
+
+   
     {
         name: 'Watch Pitch',
         description: `EVO Watch Pitch`,
@@ -529,6 +548,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

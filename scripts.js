@@ -174,12 +174,12 @@ Would you like to proceed with this amazing offer?`
                 id: 'watches',
                 type: 'dropdown',
                 label: 'Watch Selection',
-                options: ['No watch', 'Google Pixel Watch 4', 'Apple Watch Series 10', 'Samsung Galaxy Watch 8'],
+                options: ['No watch', 'Google Pixel Watch 4', 'Apple Watch Series 11', 'Samsung Galaxy Watch 8'],
                 valueMap: {
                     'No watch': '',
                     'Google Pixel Watch 4': 'I can do you the google pixel watch 4 41mm. I can do the watch over a 36 month interest free loan at £9.50 and then a one number connectivity plan on a 24 month airtime contract at £3.50 and so all together this would be £13. How does this sound to you?',
-                    'Apple Watch Series 10': 'I can do you the Apple watch series 10 42mm. I can do the watch over a 36 month interest free loan at £14 and then a one number connectivity plan on a 24 month airtime contract at £5 and so all together this would be £19. How does this sound to you?',
-                    'Samsung Galaxy Watch 8': 'I can do you the Samsung Galaxy watch 8 46mm classic. I can do the watch over a 36 month interest free loan at £13.50 and then a one number connectivity plan on a 24 month airtime at £7.50 and so all together this would be £20.50. How does this sound to you?'
+                    'Apple Watch Series 11': 'I can do you the Apple watch series 11 42mm. I can do the watch over a 36 month interest free loan at £13.55 and then a one number connectivity plan on a 24 month airtime contract at £3.50 and so all together this would be £17.05. How does this sound to you?',
+                    'Samsung Galaxy Watch 8': 'I can do you the Samsung Galaxy watch 8 40mm. I can do the watch over a 36 month interest free loan at £7.50 and then a one number connectivity plan on a 24 month airtime at £3.50 and so all together this would be £11. How does this sound to you?'
                 }
             }
         ],
@@ -548,6 +548,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

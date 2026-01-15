@@ -185,6 +185,22 @@ Would you like to proceed with this amazing offer?`
         ],
         baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], [watches]`
     },
+     {
+        name: 'After Watch Pitch',
+        description: `Pitches for after a watch is declined by the customer`,
+        fields: [
+            {
+                id: 'objectionhandle',
+                type: 'dropdown',
+                label: 'After Watch Pitching',
+                options: ['After Watch'],
+                valueMap: {
+                    'After Watch': 'No problem at all. I thought I would also make you aware as you have an account with us you get exclusive discount on additional services such as SIM only plans, tablets, laptops and iPads that can be added directly to your account. Would you like me to go over any of these with you today?'
+                }
+            }
+        ],
+        baseText: `[objectionhandle]`
+    },
     {
         name: 'Discount Term',
         description: `Sim Only Discount Term (Missing from basics terms.)`,
@@ -548,6 +564,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

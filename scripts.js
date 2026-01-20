@@ -164,26 +164,20 @@ Would you like to proceed with this amazing offer?`
         ],
         baseText: `[tabpitch]`
     },
-    {
+        {
         name: 'Watch Addlines',
         description: `Watch addline pitches for after a device upgrade. Updated 20/10/2025`,
         fields: [
             { id: 'linecount', type: 'text', label: 'No. of lines passed' },
             { id: 'devicename', type: 'text', label: 'Order device' },
-            {
-                id: 'watches',
-                type: 'dropdown',
-                label: 'Watch Selection',
-                options: ['No watch', 'Google Pixel Watch 4', 'Apple Watch Series 11', 'Samsung Galaxy Watch 8'],
-                valueMap: {
-                    'No watch': '',
-                    'Google Pixel Watch 4': 'I can do you the google pixel watch 4 41mm. I can do the watch over a 36 month interest free loan at £9.50 and then a one number connectivity plan on a 24 month airtime contract at £3.50 and so all together this would be £13. How does this sound to you?',
-                    'Apple Watch Series 11': 'I can do you the Apple watch series 11 42mm. I can do the watch over a 36 month interest free loan at £13.55 and then a one number connectivity plan on a 24 month airtime contract at £3.50 and so all together this would be £17.05. How does this sound to you?',
-                    'Samsung Galaxy Watch 8': 'I can do you the Samsung Galaxy watch 8 40mm. I can do the watch over a 36 month interest free loan at £7.50 and then a one number connectivity plan on a 24 month airtime at £3.50 and so all together this would be £11. How does this sound to you?'
-                }
-            }
+            { id: 'addwatchname', type: 'text', label: 'Watch Name' },
+            { id: 'deviceaddwatch', type: 'text', label: 'Device cost' },
+            { id: 'watchaddairtime', type: 'text', label: 'Airtime Cost' },
+            { id: 'watchaddtotal', type: 'text', label: 'Total Cost' },
+            
+            
         ],
-        baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], [watches]`
+        baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], I can do you the [addwatchname]. I can do the watch over a 36 month interest free loan at £[deviceaddwatch] and then a one number connectivity plan on a 24 month airtime contract at £[watchaddairtime] and so all together this would be £[watchaddtotal]. How does this sound to you?`
     },
      {
         name: 'After Watch Pitch',
@@ -564,6 +558,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

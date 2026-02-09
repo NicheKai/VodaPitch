@@ -124,10 +124,10 @@ Should we get one of these added for you so you're covered from the moment your 
         fields: [
             { id: 'linecountcredit', type: 'text', label: 'Lines Passed' },
             { id: 'creditdevice', type: 'text', label: 'Upgrade Device' },
-            { id: 'totalpricecredit', type: 'text', label: 'Watch Price' },
+            { id: 'totalpricecredit', type: 'text', label: 'Watch Price(£)' },
 
         ],
-        baseText: `Your credit check is complete and you have passed for [linecountcredit] amount of lines! As you are a valued customer and taking out the [creditdevice] we can do a watch to pair with this for only [totalpricecredit] monthly. Would you like to know more about this at the end of this phone upgrade?`
+        baseText: `Your credit check is complete and you have passed for [linecountcredit] amount of lines! As you are a valued customer and taking out the [creditdevice] we can do a watch to pair with this for only £[totalpricecredit] monthly. Would you like to know more about this at the end of this phone upgrade?`
     },
    
     {
@@ -569,6 +569,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

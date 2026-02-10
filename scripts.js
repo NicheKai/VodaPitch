@@ -149,6 +149,28 @@ This is [monthlyterm] of £[watchmonthly] for the device loan and 24 monthly pay
 How does this sound?`
     },
     {
+        name: 'Tablet Evo Pitch',
+        description: 'Evo Plans',
+        fields: [
+            { id: 'evodeviceModel', type: 'text', label: 'Device Model' },
+            { id: 'evostorageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '1TB', '2TB', '64GB'] },
+            { id: 'evodeviceData', type: 'text', label: 'Total Data(GB)' },
+            { id: 'evototalMonthly', type: 'text', label: 'Total Cost(£)' },
+            { id: 'evoupfrontCost', type: 'text', label: 'Upfront Cost(£)' },
+            { id: 'evodeviceCost', type: 'text', label: 'Device Cost(£)' },
+            { id: 'evoloanLength', type: 'dropdown', label: 'Loan Length', options: ['48 months', '36 months', '24 months'] },
+            { id: 'evoairtimeCost', type: 'text', label: 'Airtime Cost(£)' },
+            { id: 'evoRoaming', type: 'dropdown', label: 'Roaming', options: ['', 'EU Roaming', 'Global Roaming'] }
+
+        ],
+        baseText: `We can do the [evodeviceModel] [evostorageSize]
+Including [evodeviceData]GB data [evoRoaming]
+Total cost = £[evototalMonthly] per month
+There is an upfront cost of £[evoupfrontCost] plus a £6.99 delivery fee which can be either paid today or added to your next bill
+The direct debit will be split into 2 with your device being £[evodeviceCost] per month over a [evoloanLength] loan agreement and the airtime plan being £[evoairtimeCost] per month on a 24-month contract  
+`
+    },
+    {
         name: 'Tablet Addlines',
         description: `Addline tablet pitches. Updated 20/10/2025`,
         fields: [
@@ -569,6 +591,7 @@ copyButton.addEventListener('click', () => {
         console.error('Failed to copy: ', err);
     });
 });
+
 
 
 

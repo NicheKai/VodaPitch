@@ -244,13 +244,52 @@ Your full monthly cost including your discount will be £[afterdiscount] Inc. VA
 We are not able to apply any further discounts to a plan that is already discounted.`
     },
     {
-        name: 'Embed Links',
-        description: `Hide your link in some text for nuance.`,
+        name: 'Comm Tool',
+        description: `Expanded comm tool`,
         fields: [
-            { id: 'hreflink', type: 'text', label: 'Link' },
-            { id: 'hreftext', type: 'text', label: 'Text' }
+            { id: 'vul', type: 'dropdown', label: 'Vulnerability completed?', options: ['No', 'Yes'] },
+            { id: 'cname', type: 'text', label: 'Customer Name' },
+            { id: 'csec', type: 'dropdown', label: 'DPA', options: ['N/A', 'High Risk', 'OTAC', 'PIN', 'Memorable Word'] },
+            { id: 'creason', type: 'text', label: 'What has the customer come on for?' },
+            { id: 'discussed', type: 'text', label: 'What was discussed in the chat?  ( detailed )' },
+            { id: 'anychanges', type: 'dropdown', label: 'Any changes made on the account?', options: ['No', 'Yes'] },
+            { id: 'transferq', type: 'dropdown', label: 'Did you transfer the call or did the cx leave with  no further questions?', options: ['No', 'Yes'] },
+            { id: 'team', type: 'text', label: 'what team did you transfer to and why' },
+            { id: 'transcript', type: 'dropdown', label: 'Full transcript in notes? [Yes / No]', options: ['Yes', 'No'] }
         ],
-        baseText: `<a href="[hreflink]" target="_blank">[hreftext]</a> `
+        baseText: `1.) Vulnerable Customer script completed today [Yes / No]
+[vul]
+2.) Who was the caller?
+[cname]
+3.) Passed/failed DPA checks
+[csec]
+4.) What has the customer come on for?
+[creason]
+5.) What was discussed in the chat?  ( detailed )
+[discussed]
+6.) Any changes made on the account?
+[anychanges]
+7.)  Did you transfer the call or did the cx leave with no further questions?
+[transferq]
+8.) what team did you transfer to and why?
+[team]
+9.) Full transcript in notes  [Yes / No]
+[transcript]`
+    },
+    {
+        name: 'Discount Term',
+        description: `Sim Only Discount Term (Missing from basics terms.)`,
+        fields: [
+            { id: 'ammount12', type: 'text', label: 'Discount £ or %' },
+            { id: 'discounttime', type: 'text', label: 'Discount Duration' },
+            { id: 'afterdiscount', type: 'text', label: 'Price after discount' }
+
+        ],
+        baseText: `You will receive a discount of [ammount12] for [discounttime]
+
+Your full monthly cost including your discount will be £[afterdiscount] Inc. VAT
+
+We are not able to apply any further discounts to a plan that is already discounted.`
     },
     {
         name: 'Pitch Card (Not Working)',

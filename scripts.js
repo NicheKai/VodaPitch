@@ -254,8 +254,7 @@ We are not able to apply any further discounts to a plan that is already discoun
             { id: 'discussed', type: 'text', label: 'What was discussed in the chat?  ( detailed )' },
             { id: 'anychanges', type: 'dropdown', label: 'Any changes made on the account?', options: ['No', 'Yes'] },
             { id: 'transferq', type: 'dropdown', label: 'Did you transfer the call or did the cx leave with  no further questions?', options: ['No', 'Yes'] },
-            { id: 'team', type: 'text', label: 'what team did you transfer to and why' },
-            { id: 'transcript', type: 'dropdown', label: 'Full transcript in notes? [Yes / No]', options: ['Yes', 'No'] }
+            { id: 'team', type: 'text', label: 'what team did you transfer to and why' }
         ],
         baseText: `1.) Vulnerable Customer script completed today [Yes / No]
 [vul]
@@ -273,8 +272,7 @@ We are not able to apply any further discounts to a plan that is already discoun
 [transferq]
 8.) what team did you transfer to and why?
 [team]
-9.) Full transcript in notes  [Yes / No]
-[transcript]`
+`
     },
     {
         name: 'Discount Term',

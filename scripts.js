@@ -238,9 +238,9 @@ We are not able to apply any further discounts to a plan that is already discoun
                     'Non Responder 7 mins': 'We haven’t heard from you yet. Would you like to carry on chatting with me?',
                     'Non Responder 10 mins': 'As I’ve not heard from you, Im closing this chat. Please feel free to connect with us again in case of any queries',
                     'Non Resolved 7 mins': 'I’m awaiting your response to help you with your query. Are we still connected?',
-                    'Non Resolved 10 mins': 'We’ve resolved your query, and since we’ve not heard from you, we’ve sent you a text message confirming the actions we’ve taken on your account today. Thank you for contacting Vodafone',
+                    'Non Resolved 10 mins': 'As I haven’t heard from you, I’m closing this chat. Please feel free to connect with us again in case of any queries.',
                     'Complete Query 7 mins': 'I’m awaiting your response to help you with your query. Are we still connected?',
-                    'Complete Query 10 mins': 'As I haven’t heard from you, I’m closing this chat. Please feel free to connect with us again in case of any queries.'
+                    'Complete Query 10 mins': 'We’ve resolved your query, and since we’ve not heard from you, we’ve sent you a text message confirming the actions we’ve taken on your account today. Thank you for contacting Vodafone'
                 }
             },
         ],

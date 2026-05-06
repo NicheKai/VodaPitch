@@ -105,6 +105,17 @@ Plus enjoy:
 ✔ Cancel anytime
 
 Should we get one of these added for you so you're covered from the moment your phone arrives?`
+    },        
+    {
+        name: 'Watch Pitch(After Credit)',
+        description: 'After credit watch pitch',
+        fields: [
+            { id: 'linecountcredit', type: 'text', label: 'Lines Passed' },
+            { id: 'creditdevice', type: 'text', label: 'Upgrade Device' },
+            { id: 'totalpricecredit', type: 'text', label: 'Watch Price(£)' },
+
+        ],
+        baseText: `Your credit check is complete and you have passed for [linecountcredit] lines! As you are a valued customer and taking out the [creditdevice] we can do a watch to pair with this for only £[totalpricecredit] monthly. Would you like to know more about this at the end of this phone upgrade?`
     },
     {
         name: 'Broadband Pitch',
@@ -117,21 +128,8 @@ Should we get one of these added for you so you're covered from the moment your 
         ],
         baseText: `I can see you don't have vodafone broadband on the account, I just want to make you aware as you have a mobile you have exclusive discounts on broadband. We offer broadband at your address, [custAddress] and I can do £[hbbCost] for [hbbSpeed]mbps. Would you like to know more information around this after we complete your initial query?`
     },
-     
     {
-        name: 'Watch Pitch(New)',
-        description: 'After credit watch pitch',
-        fields: [
-            { id: 'linecountcredit', type: 'text', label: 'Lines Passed' },
-            { id: 'creditdevice', type: 'text', label: 'Upgrade Device' },
-            { id: 'totalpricecredit', type: 'text', label: 'Watch Price(£)' },
-
-        ],
-        baseText: `Your credit check is complete and you have passed for [linecountcredit] lines! As you are a valued customer and taking out the [creditdevice] we can do a watch to pair with this for only £[totalpricecredit] monthly. Would you like to know more about this at the end of this phone upgrade?`
-    },
-   
-    {
-        name: 'Watch Pitch',
+        name: 'Watch Pitch(Evo)',
         description: `EVO Watch Pitch`,
         fields: [
             { id: 'watchdevice', type: 'text', label: 'Watch Model' },
@@ -149,7 +147,7 @@ This is [monthlyterm] of £[watchmonthly] for the device loan and 24 monthly pay
 How does this sound?`
     },
     {
-        name: 'Tablet Evo Pitch',
+        name: 'Tablet Pitch(Evo)',
         description: 'Evo Plans',
         fields: [
             { id: 'evodeviceModel', type: 'text', label: 'Device Model' },
@@ -171,64 +169,6 @@ The direct debit will be split into 2 with your device being £[evodeviceCost] p
 `
     },
     {
-        name: 'Tablet Addlines',
-        description: `Addline tablet pitches. Updated 20/10/2025`,
-        fields: [
-            {
-                id: 'tabpitch',
-                type: 'dropdown',
-                label: 'Tablets',
-                options: ['No tablet', 'Apple iPad A16', 'Samsung Galaxy Tab A9'],
-                valueMap: {
-                    'No tablet': '',
-                    'Apple iPad A16': `Before we finish of your sim today we have an amazing offer on a  Apple iPad A16 you could take advantage of.
-
-This is available for just £9.50 across 48 Month's on a interest free loan and a 1GB Data plan attached to this for just £8 meaning you can get all of this today for just £17.50 per month. 
-
-Please note this comes with a £30 Upfront fee alongside a £6.99 Delivery
-
-Would you like to proceed with this amazing offer?`,
-                    'Samsung Galaxy Tab A9': `Before we finish of your sim today we  have an amazing offer on a Samsung Galaxy Tab A9 you could take advantage of.
-
-This tablet is £6 across 36 Month's on A interest free loan and a 1GB Data plan attached to this for just £8 meaning you can get all of this today for just £14 per month. 
-Would you like to proceed with this amazing offer?`
-                }
-            }
-        ],
-        baseText: `[tabpitch]`
-    },
-        {
-        name: 'Watch Addlines',
-        description: `Watch addline pitches for after a device upgrade. Updated 20/10/2025`,
-        fields: [
-            { id: 'linecount', type: 'text', label: 'No. of lines passed' },
-            { id: 'devicename', type: 'text', label: 'Order device' },
-            { id: 'addwatchname', type: 'text', label: 'Watch Name' },
-            { id: 'deviceaddwatch', type: 'text', label: 'Device cost' },
-            { id: 'watchaddairtime', type: 'text', label: 'Airtime Cost' },
-            { id: 'watchaddtotal', type: 'text', label: 'Total Cost' },
-            
-            
-        ],
-        baseText: `So I have just seen you passed credit for [linecount] lines. As you are taking out the [devicename], I can do you the [addwatchname]. I can do the watch over a 36 month interest free loan at £[deviceaddwatch] and then a one number connectivity plan on a 24 month airtime contract at £[watchaddairtime] and so all together this would be £[watchaddtotal]. How does this sound to you?`
-    },
-     {
-        name: 'After Watch Pitch',
-        description: `Pitches for after a watch is declined by the customer`,
-        fields: [
-            {
-                id: 'objectionhandle',
-                type: 'dropdown',
-                label: 'After Watch Pitching',
-                options: ['After Watch'],
-                valueMap: {
-                    'After Watch': 'No problem at all. I thought I would also make you aware as you have an account with us you get exclusive discount on additional services such as SIM only plans, tablets, laptops and iPads that can be added directly to your account. Would you like me to go over any of these with you today?'
-                }
-            }
-        ],
-        baseText: `[objectionhandle]`
-    },
-    {
         name: 'Discount Term',
         description: `Sim Only Discount Term (Missing from basics terms.)`,
         fields: [
@@ -242,6 +182,69 @@ Would you like to proceed with this amazing offer?`
 Your full monthly cost including your discount will be £[afterdiscount] Inc. VAT
 
 We are not able to apply any further discounts to a plan that is already discounted.`
+    },
+    {
+        name: 'Objection Handles',
+        description: `objection handles`,
+        fields: [
+            {
+                id: 'objhand',
+                type: 'dropdown',
+                label: 'Objections',
+                options: ['We have loads of plugs. (Accessory Objection)', 'I want to keep it as a spare. (Trade-In Objection)'],
+                valueMap: {
+                    'We have loads of plugs. (Accessory Objection)': 'I see you are on an [objdevice], so can you confirm you have a USBC plug as this will be the only plug that will work with the type of cable you will get and I would hate to know that you wouldn’t be able to charge your phone!',
+                    'I want to keep it as a spare. (Trade-In Objection)': 'This is completely your choice  but we have our experts in store and on chats if you do run into any issues with your phone and if you traded in you can save up to £[objprice] monthly on your airtime, would the discount be more beneficial for you than keeping it in a draw?'
+                }
+            },
+            { id: 'objdevice', type: 'text', label: 'Old Device(Accessory Objection)' },
+            { id: 'objprice', type: 'text', label: 'Monthly(Trade-In Objection)(£)' }
+
+        ],
+        baseText: `[objhand]`
+    },
+    {
+        name: 'Useful Links (Forms)',
+        description: `Sim Only Discount Term (Missing from basics terms.)`,
+        fields: [
+            {
+                id: 'formlink',
+                type: 'dropdown',
+                label: 'Useful links',
+                options: ['PAYG to PAYM', 'Security Reset(PIN)', 'HBB Equipment Return Form', 'Trade in link', 'CityFibre Checker', 'OpenReach Checker', 'Open Order Cancellation'],
+                valueMap: {
+                    'PAYG to PAYM': 'https://www.vodafone.co.uk/payg-to-paym-form/',
+                    'Security Reset(PIN)': 'https://www.vodafone.co.uk/securityreset/',
+                    'HBB Equipment Return Form': 'https://oneknowledge.internal.vodafone.com/iforms/equipment-return',
+                    'Trade in link': 'https://www.vodafone.co.uk/mobile/vodafone-trade-in',
+                    'CityFibre Checker': 'https://cityfibre.com/homes/installation',
+                    'OpenReach Checker': 'https://www.openreach.com/fibre-checker/my-products',
+                    'Open Order Cancellation': 'https://oneknowledge.vfl.vodafone/iforms/stuck-order-form'
+                }
+            },
+        ],
+        baseText: `[formlink]`
+    },
+    {
+        name: 'Warning Messages(Are we connected)',
+        description: `Non Responder`,
+        fields: [
+            {
+                id: 'warningmes',
+                type: 'dropdown',
+                label: 'Non Responer',
+                options: ['Non Responder 7 mins', 'Non Responder 10 mins', 'Non Resolved 7 mins', 'Non Resolved 10 mins', 'Complete Query 7 mins', 'Complete Query 10 mins'],
+                valueMap: {
+                    'Non Responder 7 mins': 'We haven’t heard from you yet. Would you like to carry on chatting with me?',
+                    'Non Responder 10 mins': 'As I’ve not heard from you, Im closing this chat. Please feel free to connect with us again in case of any queries',
+                    'Non Resolved 7 mins': 'I’m awaiting your response to help you with your query. Are we still connected?',
+                    'Non Resolved 10 mins': 'We’ve resolved your query, and since we’ve not heard from you, we’ve sent you a text message confirming the actions we’ve taken on your account today. Thank you for contacting Vodafone',
+                    'Complete Query 7 mins': 'I’m awaiting your response to help you with your query. Are we still connected?',
+                    'Complete Query 10 mins': 'As I haven’t heard from you, I’m closing this chat. Please feel free to connect with us again in case of any queries.'
+                }
+            },
+        ],
+        baseText: `[warningmes]`
     },
     {
         name: 'Comm Tool',
@@ -273,146 +276,9 @@ We are not able to apply any further discounts to a plan that is already discoun
 8.) what team did you transfer to and why?
 [team]
 `
-    },
-    {
-        name: 'Discount Term',
-        description: `Sim Only Discount Term (Missing from basics terms.)`,
-        fields: [
-            { id: 'ammount12', type: 'text', label: 'Discount £ or %' },
-            { id: 'discounttime', type: 'text', label: 'Discount Duration' },
-            { id: 'afterdiscount', type: 'text', label: 'Price after discount' }
-
-        ],
-        baseText: `You will receive a discount of [ammount12] for [discounttime]
-
-Your full monthly cost including your discount will be £[afterdiscount] Inc. VAT
-
-We are not able to apply any further discounts to a plan that is already discounted.`
-    },
-    {
-        name: 'Pitch Card (Not Working)',
-        description: 'A new way to pitch devices, not ready for chats yet',
-        fields: [
-            {
-                id: 'CBrand',
-                type: 'dropdown',
-                label: 'Brand',
-                options: ['Apple', 'Samsung', 'Google'],
-                valueMap: {}
-            },
-            {
-                id: 'CDeviceImage',
-                type: 'dropdown',
-                label: 'Device Model',
-                options: [],
-                valueMap: {}
-            },
-            { id: 'CstorageSize', type: 'dropdown', label: 'Storage Size', options: ['128GB', '256GB', '512GB', '1TB', '2TB', '64GB'] },
-            { id: 'CdeviceData', type: 'text', label: 'Total Data' },
-            { id: 'CtotalMonthly', type: 'text', label: 'Total Cost(£)' },
-            { id: 'CupfrontCost', type: 'text', label: 'Upfront Cost(£)' },
-            { id: 'CdeviceCost', type: 'text', label: 'Device Cost(£)' },
-            {
-                id: 'Cloanlength',
-                type: 'dropdown',
-                label: 'Loan Length',
-                options: ['36 months', '24 months'],
-                valueMap: {
-                    '36 months': '36m',
-                    '24 months': '24m'
-                }
-            },
-            { id: 'CairtimeCost', type: 'text', label: 'Airtime Cost(£)' },
-            {
-                id: 'Croaming',
-                type: 'dropdown',
-                label: 'Roaming',
-                options: ['No Roaming', 'EU Roaming', 'Global Roaming'],
-                valueMap: {
-                    'No Roaming': ' ',
-                    'EU Roaming': '<div style="text-align: center; margin: 5px 0; padding: 5px; background: linear-gradient(to right, #E60000, #FF2E2E); border-radius: 4px; font-size: 10px;"><span style="color: #ffffff; font-weight: 600;">Inclusive roaming to 51 Locations</span></div>',
-                    'Global Roaming': '<div style="text-align: center; margin: 5px 0; padding: 5px; background: linear-gradient(to right, #E60000, #FF2E2E); border-radius: 4px; font-size: 10px;"><span style="color: #ffffff; font-weight: 600;">Inclusive roaming to 83 Locations</span></div>'
-                }
-            }
-        ],
-        baseText: `<div style="width: 200px; line-height: 1.3; margin: 0 auto; padding: 10px; background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: 'Segoe UI', Arial, sans-serif; border: 1px solid #f0f0f0;">
-<div style="text-align: center; margin-bottom: 8px;"><img style="width: 100%; max-height: 120px; object-fit: contain; border-radius: 8px;" src="[CDeviceImage]" alt="Phone" /></div>
-<div style="text-align: center; color: #1a1a1a; font-weight: bold; font-size: 15px; margin-bottom: 4px; letter-spacing: -0.2px;">[CDeviceName]</div>
-<div style="text-align: center; color: #d60000; font-size: 11px; margin-bottom: 6px; font-weight: 600;">[CstorageSize] &bull; [CdeviceData] Data</div>[Croaming]
-<div style="text-align: center; margin: 6px 0; padding: 6px; background: linear-gradient(to bottom, #f9f9f9, #f0f0f0); border-radius: 4px; font-size: 11px; border: 1px solid #e8e8e8;"><span style="color: #000; font-weight: bold; font-size: 13px;">Only &pound;[CtotalMonthly] per month</span><br /><span style="font-size: 10px; color: #666;">&pound;[CupfrontCost] upfront &bull; &pound;6.99 Delivery</span></div>
-<div style="text-align: center; margin: 6px 0; padding: 6px; background: linear-gradient(to right, #E60000, #CC0000); border-radius: 4px; font-size: 11px;"><span style="color: #ffffff; font-weight: bold;">Price breakdown:</span><br /><span style="font-size: 10px; color: #ffffff; display: inline-block; margin-top: 2px;">Device Loan &bull; [Cloanlength] &bull; &pound;[CdeviceCost]</span><br /><span style="font-size: 10px; color: #ffffff;">Airtime Plan &bull; 24m &bull; &pound;[CairtimeCost]</span></div>
-<div style="text-align: center; margin: 6px 0 0 0; padding: 6px; background: #f8f8f8; border-radius: 4px; font-size: 10px; border-top: 1px solid #e8e8e8;"><span style="color: #333; font-weight: 500;">How does this sound?</span></div>
-</div>`
     }
 ];
 
-// Device database for Pitch Card
-const deviceDatabase = {
-    Apple: {
-        'iPhone SE (2022)': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-se-2022-1.jpg',
-        'iPhone 13': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-2.jpg',
-        'iPhone 13 Mini': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-mini-2.jpg',
-        'iPhone 13 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-2.jpg',
-        'iPhone 13 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-2.jpg',
-        'iPhone 14': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-2.jpg',
-        'iPhone 14 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-plus-2.jpg',
-        'iPhone 14 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-4.jpg',
-        'iPhone 14 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-4.jpg',
-        'iPhone 15': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-2.jpg',
-        'iPhone 15 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-2.jpg',
-        'iPhone 15 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-2.jpg',
-        'iPhone 15 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-2.jpg',
-        'iPhone 16': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-2.jpg',
-        'iPhone 16 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-2.jpg',
-        'iPhone 16e': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16e-2.jpg',
-        'iPhone 16 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-2.jpg',
-        'iPhone 16 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-2.jpg',
-        'iPhone 17': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-2.jpg',
-        'iPhone 17 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-2.jpg',
-        'iPhone 17 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-2.jpg',
-        'iPhone Air': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-2.jpg'
-    },
-    Samsung: {
-        'Galaxy S21': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-5g-2.jpg',
-        'Galaxy S21 Plus': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-plus-5g-2.jpg',
-        'Galaxy S21 Ultra': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-ultra-5g-2.jpg',
-        'Galaxy S22': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-5g-3.jpg',
-        'Galaxy S22 Plus': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-plus-5g-3.jpg',
-        'Galaxy S22 Ultra': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-ultra-5g-4.jpg',
-        'Galaxy S23': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-5g-2.jpg',
-        'Galaxy S23 Plus': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-plus-5g-2.jpg',
-        'Galaxy S23 Ultra': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-ultra-5g-3.jpg',
-        'Galaxy S24': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-5g-sm-s921-2.jpg',
-        'Galaxy S24 FE': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-fe-2.jpg',
-        'Galaxy S24 Plus': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-edge-2.jpg',
-        'Galaxy S24 Ultra': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-sm-s928-2.jpg',
-        'Galaxy S25': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-sm-s931-2.jpg',
-        'Galaxy S25 FE': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-fe-02.jpg',
-        'Galaxy S25 Edge': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-edge-2.jpg',
-        'Galaxy S25 Plus': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-plus-sm-s936-2.jpg',
-        'Galaxy S25 Ultra': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-ultra-sm-s938-2.jpg',
-        'Galaxy Z Fold6': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-fold6-3.jpg',
-        'Galaxy Z Flip6': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip6-6.jpg',
-        'Galaxy Z Fold7': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-fold7-3.jpg',
-        'Galaxy Z Flip7': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip7-5.jpg',
-        'Galaxy Z Flip7 FE': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip7-fe-2.jpg',
-        'Galaxy A05s': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a05s-2.jpg',
-        'Galaxy A16': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a16-5g-2.jpg',
-        'Galaxy A17': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a17-5g-13.jpg',
-        'Galaxy A36': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a36-2.jpg',
-        'Galaxy A56': 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a56-2.jpg'
-    },
-    Google: {
-        'Pixel 9': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9-2.jpg',
-        'Pixel 9a': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9a-5.jpg',
-        'Pixel 9 Pro': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9-pro-2.jpg',
-        'Pixel 9 Pro Fold': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9-pro-fold-4.jpg',
-        'Pixel 10': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-10-12.jpg',
-        'Pixel 10 Pro': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-10-pro-12.jpg',
-        'Pixel 10 Pro XL': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-10-pro-xl-12.jpg',
-        'Pixel 10 Pro Fold': 'https://fdn2.gsmarena.com/vv/pics/google/google-pixel-10-pro-fold-00.jpg'
-    }
-};
 
 let currentTemplate = null;
 
@@ -450,55 +316,7 @@ function renderTemplate(template) {
     templateDescription.textContent = template.description;
     pitchForm.innerHTML = '';
 
-    if (template.name === 'Pitch Card (Not Working)') {
-        const container = document.createElement('div');
-        container.className = 'pitch-card-container';
-
-        const formSection = document.createElement('div');
-        formSection.className = 'pitch-card-form';
-
-        const previewSection = document.createElement('div');
-        previewSection.className = 'pitch-card-preview';
-        previewSection.id = 'pitch-card-preview';
-
-        template.fields.forEach(field => {
-            const label = document.createElement('label');
-            label.textContent = field.label;
-
-            let inputElement;
-            if (field.type === 'text') {
-                inputElement = document.createElement('input');
-                inputElement.type = 'text';
-                inputElement.id = field.id;
-                if (field.placeholder) inputElement.placeholder = field.placeholder;
-                if (field.value) inputElement.value = field.value;
-            } else if (field.type === 'dropdown') {
-                inputElement = document.createElement('select');
-                inputElement.id = field.id;
-                field.options.forEach(option => {
-                    const optionEl = document.createElement('option');
-                    optionEl.value = option;
-                    optionEl.textContent = option;
-                    inputElement.appendChild(optionEl);
-                });
-            }
-
-            inputElement.addEventListener('input', updatePreview);
-
-            if (field.id === 'CBrand') {
-                inputElement.addEventListener('change', updateDeviceOptions);
-            }
-
-            formSection.appendChild(label);
-            formSection.appendChild(inputElement);
-        });
-
-        container.appendChild(formSection);
-        container.appendChild(previewSection);
-        pitchForm.appendChild(container);
-
-        updateDeviceOptions();
-    } else {
+    {
         template.fields.forEach(field => {
             const label = document.createElement('label');
             label.textContent = field.label;
@@ -517,6 +335,11 @@ function renderTemplate(template) {
                     optionEl.textContent = option;
                     inputElement.appendChild(optionEl);
                 });
+            if (field.type === 'booltest') {
+                inputElement = document.createElement('BUTTON');
+                inputElement.id - field.id;
+                
+            } else
 
                 if (field.valueMap) {
                     const description = document.createElement('div');

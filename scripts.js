@@ -43,7 +43,7 @@ Should I talk you through how to get a code?`
         baseText: `We can do the [deviceModel] [storageSize]
 Unlimited calls, texts and [deviceData]GB data [Roaming] [Ent]
 Total cost = £[totalMonthly] per month
-There is an upfront cost of £[upfrontCost] plus a £6.99 delivery fee which can be either paid today or added to your next bill
+There is an upfront cost of £[upfrontCost] plus a £6.99 delivery fee
 The direct debit will be split into 2 with your device being £[deviceCost] per month over a [loanLength] loan agreement and the airtime plan being £[airtimeCost] per month on a 24-month contract  
 
 If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one! 

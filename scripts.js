@@ -21,7 +21,7 @@ const templates = [
             { id: 'monthly', type: 'text', label: 'Monthly Value(£)' }
 
         ],
-        baseText: `Whilst I am getting you a pitch for your device  I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That's £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
+        baseText: `Whilst I am getting you a pitch for your device, I just want to make you aware your current [traddev] could be worth up to £[devval] when traded in. Since you are looking to purchase the [newdev]. [bonustoggle] [bonus] That's £[tradtotal] in total which works out to £[monthly] off your sim plan per month for 24 months.
 Should I talk you through how to get a code?`
     },
     {
@@ -58,54 +58,17 @@ Should we get this ordered for you?
                 id: 'accpitch',
                 type: 'dropdown',
                 label: 'Accessories',
-                options: ['Plug pitch (Newer than iPhone 15)', 'Plug Pitch (Older than iPhone 15)', 'Case/Screen Protector £22'],
+                options: ['Plug pitch (Newer than iPhone 15)', 'Plug Pitch (Older than iPhone 15)', 'Case/Screen Protector £22', 'Powerbank £20'],
                 valueMap: {
                     'Plug pitch (Newer than iPhone 15)': `This device does not come with a plug! It's a USB C connection too - for just £20 you can get a Belkin super fast charging plug with your new phone! Super fast charging  getting your phone from 0-50% in just 24 minutes.  Shall we get this added so you are set when the phone arrives?`,
                     'Plug Pitch (Older than iPhone 15)': `Before we proceed the phones don't come with a plug in the box anymore. I see you are on an older apple model and an  old Apple USB plug will not be compatible with the new type c port and cable included in the box. What we can do is  add the Belkin 30W plug for just £20 which we will add to the next bill so you can be confident you'll be able to charge your phone as soon as you have it. Shall we get this added for you?`,
-                    'Case/Screen Protector £22': `As we move on in terms I have just found a bundle deal with your phone were I can add a case and screen protector for only £22 which we can add to your next bill, shall we get these added so you're protected as soon as you open the box?`
+                    'Case/Screen Protector £22': `As we move on in terms I have just found a bundle deal with your phone were I can add a case and screen protector for only £22 which we can add to your upfront, shall we get these added so you're protected as soon as you open the box?`,
+                    'Powerbank £20': `As we move on in terms, I have just found a powerbank deal, which is perfect to keep your battery topped up throughout the day! We have the Belkin 20k PowerBank for just £20! Shall we get this added so you're never left without charge?`
                 }
             }
         ],
         baseText: `[accpitch]`
     },
-    {
-        name: 'Insurance Pitch',
-        description: `Question 1 – Have you ever dropped your phone before?
-
-Question 2- Have you ever broken your phone and had to pay to get it fixed?`,
-        fields: [
-            { id: 'damageCover', type: 'text', label: 'Damage Cover(£)' },
-            { id: 'lossCover', type: 'text', label: 'Loss, theft and damage Cover(£)' },
-            {
-                id: 'screenToggle',
-                type: 'dropdown',
-                label: 'Screen Cover',
-                options: ['No screen cover', 'Screen Damage'],
-                valueMap: {
-                    'No screen cover': ' ',
-                    'Screen Damage': `Screen Damage – cracks fixed fast
-Price £`
-                }
-            },
-            { id: 'screenCost', type: 'text', label: 'Screen cost(£) - If applicable' }
-
-        ],
-        baseText: `Now you've chosen your phone, lets make sure you're protected!
-
-Loss, Theft and Damage Cover – total peace of mind
-Price Per Month £[lossCover]
-
-Damage Cover – accidents happen, we’ve got you
-Price Per Month £[damageCover]
-
-[screenToggle][screenCost]
-
-Plus enjoy:
-✔ Next-day replacement
-✔ Cancel anytime
-
-Should we get one of these added for you so you're covered from the moment your phone arrives?`
-    },        
     {
         name: 'Watch Pitch(After Credit)',
         description: 'After credit watch pitch',
@@ -211,7 +174,7 @@ We are not able to apply any further discounts to a plan that is already discoun
                 id: 'formlink',
                 type: 'dropdown',
                 label: 'Useful links',
-                options: ['PAYG to PAYM', 'Security Reset(PIN)', 'HBB Equipment Return Form', 'Trade in link', 'CityFibre Checker', 'OpenReach Checker', 'Open Order Cancellation'],
+                options: ['PAYG to PAYM', 'Security Reset(PIN)', 'HBB Equipment Return Form', 'Trade in link', 'CityFibre Checker', 'OpenReach Checker', 'Open Order Cancellation', 'Pro Rata Calculator', 'Scio', 'Livechat', 'Ofcom Network Checker'],
                 valueMap: {
                     'PAYG to PAYM': 'https://www.vodafone.co.uk/payg-to-paym-form/',
                     'Security Reset(PIN)': 'https://www.vodafone.co.uk/securityreset/',
@@ -219,7 +182,11 @@ We are not able to apply any further discounts to a plan that is already discoun
                     'Trade in link': 'https://www.vodafone.co.uk/mobile/vodafone-trade-in',
                     'CityFibre Checker': 'https://cityfibre.com/homes/installation',
                     'OpenReach Checker': 'https://www.openreach.com/fibre-checker/my-products',
-                    'Open Order Cancellation': 'https://oneknowledge.vfl.vodafone/iforms/stuck-order-form'
+                    'Open Order Cancellation': 'https://oneknowledge.vfl.vodafone/iforms/stuck-order-form',
+                    'Pro Rata Calculator': 'https://oneknowledge.vfl.vodafone/calculators/pro-rata-calculator',
+                    'Livechat': 'https://oneknowledge.internal.vodafone.com/ukintranet/chat-support/',
+                    'Scio': 'https://aurorakm.vfl.vodafone/GTConnect/UnifiedAcceptor/FrameworkDesktop.Main',
+                    'Ofcom Network Checker': 'https://www.ofcom.org.uk/phones-and-broadband/coverage-and-speeds/ofcom-checker'
                 }
             },
         ],
@@ -289,15 +256,58 @@ const templateDescription = document.getElementById('template-description');
 const copyButton = document.getElementById('copy-button');
 const preview = document.getElementById('preview');
 
-templates.forEach(template => {
-    const link = document.createElement('a');
-    link.textContent = template.name;
-    link.href = '#';
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentTemplate = template;
-        renderTemplate(template);
+// Build a single unified sidebar list combining the normal flat-form
+// templates with the branching (Yes/No conversation tree) pitches.
+// Order is manual. Flat templates appear in the order they're defined in
+// the `templates` array (above). Each branching pitch is placed using its
+// `insertAfter` property (set in branch-pitches.js) — give it the exact
+// `name` of the flat or branch pitch it should appear directly after, or
+// leave `insertAfter` unset / use 'START' to place it at the very top.
+// Any branch pitch with no match (or no `insertAfter`) is appended at the end.
+const sidebarEntries = templates.map(template => ({ name: template.name, kind: 'flat', template }));
+
+if (typeof branchPitches !== 'undefined') {
+    branchPitches.forEach(branchTemplate => {
+        const entry = { name: branchTemplate.name, kind: 'branch', template: branchTemplate };
+        const anchor = branchTemplate.insertAfter;
+
+        if (anchor === 'START') {
+            sidebarEntries.unshift(entry);
+            return;
+        }
+
+        const anchorIndex = anchor ? sidebarEntries.findIndex(e => e.name === anchor) : -1;
+        if (anchorIndex !== -1) {
+            sidebarEntries.splice(anchorIndex + 1, 0, entry);
+        } else {
+            sidebarEntries.push(entry);
+        }
     });
+}
+
+sidebarEntries.forEach(entry => {
+    const link = document.createElement('a');
+    link.textContent = entry.name;
+    link.href = '#';
+
+    if (entry.kind === 'flat') {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentTemplate = entry.template;
+            renderTemplate(entry.template);
+        });
+    } else {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentTemplate = null; // not a flat template
+            document.getElementById('welcome-content').style.display = 'none';
+            document.getElementById('knowledge-base-section').style.display = 'none';
+            document.getElementById('template-content').style.display = 'none';
+            document.getElementById('branch-content').style.display = 'block';
+            window.BranchEngine.render(entry.template);
+        });
+    }
+
     sidebar.appendChild(link);
 });
 
@@ -306,6 +316,7 @@ function renderTemplate(template) {
 
     document.getElementById('welcome-content').style.display = 'none';
     document.getElementById('knowledge-base-section').style.display = 'none';
+    document.getElementById('branch-content').style.display = 'none';
     document.getElementById('template-content').style.display = 'block';
 
     templateTitle.textContent = template.name;
@@ -335,6 +346,7 @@ function renderTemplate(template) {
                     optionEl.textContent = option;
                     inputElement.appendChild(optionEl);
                 });
+            
             if (field.type === 'booltest') {
                 inputElement = document.createElement('BUTTON');
                 inputElement.id - field.id;
@@ -347,7 +359,12 @@ function renderTemplate(template) {
                     description.textContent = ' ';
                     pitchForm.appendChild(description);
                 }
-            }
+            } else
+                if (field.type === 'numtest') {
+                inputElement = document.createElement('number');
+                inputElement.type = 'text';
+                inputElement.id = field.id;
+                }
 
             inputElement.addEventListener('input', updatePreview);
 
@@ -384,6 +401,30 @@ function updateDeviceOptions() {
 
 function updatePreview() {
     if (!currentTemplate) return;
+
+    // auto-calc tradtotal from devval and bonus
+    const devValEl = document.getElementById('devval');
+    const bonusEl = document.getElementById('bonus');
+    const tradTotalEl = document.getElementById('tradtotal');
+    
+    if (devValEl && bonusEl && tradTotalEl) {
+        const devVal = parseFloat(devValEl.value || 0) || 0;
+        const bonusVal = parseFloat(bonusEl.value || 0) || 0;
+        const total = devVal + bonusVal;
+        tradTotalEl.value = total > 0 ? total.toFixed(2) : '';
+    }
+
+    // auto-calc monthly saving for Trade in Pitch (divide tradtotal by 24)
+    const monthlyEl = document.getElementById('monthly');
+    if (tradTotalEl && monthlyEl) {
+        const raw = tradTotalEl.value || '';
+        const num = parseFloat(raw.replace(/[^0-9.-]+/g, ''));
+        if (!isNaN(num)) {
+            monthlyEl.value = (num / 24).toFixed(2);
+        } else {
+            monthlyEl.value = '';
+        }
+    }
 
     let script = currentTemplate.baseText;
     currentTemplate.fields.forEach(field => {

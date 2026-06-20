@@ -105,6 +105,8 @@ class KnowledgeBase {
         // Hide all other content, show knowledge base
         document.getElementById('welcome-content').style.display = 'none';
         document.getElementById('template-content').style.display = 'none';
+        const branchContent = document.getElementById('branch-content');
+        if (branchContent) branchContent.style.display = 'none';
         document.getElementById('knowledge-base-section').style.display = 'block';
 
         // Load data

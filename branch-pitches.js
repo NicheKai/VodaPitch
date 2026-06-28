@@ -133,10 +133,10 @@ Plus enjoy:
 ✔ Next-day replacement
 ✔ Cancel anytime
 
-Should we get one of these added for you so you're covered from the moment your phone arrives?`,
+Should we get one of these added for you?`,
                 fields: [
                     { id: 'insureddevice', label: 'Insured Device', prefix: '', placeholder: '' },
-                    { id: 'losscover2', label: 'Loss, Theft and Damage Cover - Price Per Month (£)', prefix: '', placeholder: '' },
+                    { id: 'lossCover2', label: 'Loss, Theft and Damage Cover - Price Per Month (£)', prefix: '', placeholder: '' },
                     { id: 'damageCover2', label: 'Damage Cover - Price Per Month (£)', prefix: '', placeholder: '' },
                     { id: 'screenCover2', label: 'Screen Damage - Price Per Month(£)', prefix: '', placeholder: '' }
                 ],

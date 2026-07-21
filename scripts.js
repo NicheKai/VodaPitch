@@ -46,7 +46,6 @@ Total cost = £[totalMonthly] per month
 There is an upfront cost of £[upfrontCost] plus a £6.99 delivery fee
 The direct debit will be split into 2 with your device being £[deviceCost] per month over a [loanLength] loan agreement and the airtime plan being £[airtimeCost] per month on a 24-month contract  
 
-If this cost is a little higher than youd like you can get your trade in code from the trade in toolkit on the Vodafone App and we can Trade In your current device to lower costs for the new one! 
 Should we get this ordered for you?
 `
     },
@@ -127,7 +126,7 @@ How does this sound?`
         baseText: `We can do the [evodeviceModel] [evostorageSize]
 Including [evodeviceData]GB data [evoRoaming]
 Total cost = £[evototalMonthly] per month
-There is an upfront cost of £[evoupfrontCost] plus a £6.99 delivery fee which can be either paid today or added to your next bill
+There is an upfront cost of £[evoupfrontCost] plus a £6.99 delivery fee
 The direct debit will be split into 2 with your device being £[evodeviceCost] per month over a [evoloanLength] loan agreement and the airtime plan being £[evoairtimeCost] per month on a 24-month contract  
 `
     },
